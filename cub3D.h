@@ -11,17 +11,30 @@
 
 #define FILE_ENDING 0
 #define CANNOT_OPEN 1
+#define ALLOCATION	99
 
 
 typedef struct s_map
 {
-	char	**grid;
-}			t_map;
+	char			**grid;
+	unsigned int	width;
+	unsigned int	height;
+	char			*north_texture;
+	char			*south_texture;
+	char			*west_texture;
+	char			*east_texture;
+	char			*floor_color;
+	char			*ceiling_color;
+}	t_map;
 
 //error/exit/free
 void throwError(int code);
 
 //map
 void checkFile(t_map *map, char *filename);
+
+//map_utils
+void printGrid(char **grid);
+int checkIfEmpty(char *str);
 
 #endif
