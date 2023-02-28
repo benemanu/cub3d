@@ -9,4 +9,19 @@
 # include <stdlib.h>
 # include <math.h>
 
+#define FILE_ENDING 0
+#define CANNOT_OPEN 1
+
+
+typedef struct s_map
+{
+	char	**grid;
+}			t_map;
+
+//error/exit/free
+void throwError(int code);
+
+//map
+void checkFile(t_map *map, char *filename);
+
 #endif

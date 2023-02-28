@@ -6,7 +6,7 @@
 #    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 08:18:10 by shoffman          #+#    #+#              #
-#    Updated: 2023/02/27 17:35:35 by shoffman         ###   ########.fr        #
+#    Updated: 2023/02/28 10:12:05 by shoffman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,11 @@ SRCS	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 			ft_toupper.c ft_tolower.c ft_strchr.c ft_strrchr.c ft_strncmp.c ft_memchr.c \
 			ft_memcmp.c ft_strnstr.c ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c \
 			ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
-			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+			ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c ft_strcmp.c \
 			ft_printf.c ft_printf_utils.c \
-			get_next_line.c get_next_line_utils.c
+			get_next_line.c get_next_line_utils.c 
 
-OBJS	=	${SRCS:.c=.o}
+OBJS	= 	${SRCS:.c=.o}
 RM		=	rm -f
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
@@ -29,15 +29,15 @@ NAME	=	libft.a
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I includes
 
 ${NAME}: ${OBJS}
-	@ar rc ${NAME} ${OBJS}
+	ar rc ${NAME} ${OBJS}
 
 all: ${NAME}
 
 clean:
-	@${RM} ${OBJS}
+	${RM} ${OBJS}
 
 fclean: clean
-	@${RM} ${NAME} a.out
+	${RM} ${NAME} a.out
 	
 re: fclean all
 

@@ -1,10 +1,12 @@
-SRCS	= cub3d.c
-OUT		= cub3d
-CC		= cc
-OBJS	= $(SRCS:.c=.o)
-FLAGS	= -Wall -Wextra -Werror -g
-XFLAGS	= -L./minilibx-linux -lmlx -lXext -lX11 -lm
-VALGR	= valgrind-out.txt
+SRCS	= 	cub3D.c \
+			map.c
+			
+OUT		= 	cub3D
+CC		= 	cc
+OBJS	= 	$(SRCS:.c=.o)
+FLAGS	= 	-Wall -Wextra -Werror -g
+XFLAGS	= 	-L./minilibx-linux -lmlx -lXext -lX11 -lm
+VALGR	= 	valgrind-out.txt
 
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
