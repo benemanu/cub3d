@@ -1,6 +1,7 @@
 SRCS	= 	cub3D.c \
-			map.c
-			
+			check_file.c \
+			utils.c
+		
 OUT		= 	cub3D
 CC		= 	cc
 OBJS	= 	$(SRCS:.c=.o)
@@ -32,7 +33,7 @@ fclean:
 
 run: $(OUT)
 	@echo "$(PURPLE)Executing$(CLR_RMV)"
-	@./$(OUT)
+	@./$(OUT) map.cub
 
 val:	re
 	@echo "$(CYAN)Executing$(CLR_RMV)"
