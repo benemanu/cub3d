@@ -30,8 +30,11 @@ typedef struct s_map
 //error/exit/free
 void throwError(int code);
 
-//map
+//file
 void checkFile(t_map *map, char *filename);
+
+//info
+void checkAndSaveInfo(t_map *map, char *str);
 
 //map_utils
 void printGrid(char **grid);

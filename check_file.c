@@ -1,11 +1,5 @@
 #include "cub3D.h"
 
-static void checkAndSaveInfo(t_map *map, char *str)
-{
-	if(*str == 'C')
-		map->ceiling_color = ft_strdup(str);
-}
-
 static int getMapInfo(t_map *map, int fd)
 {
 	char *line;
