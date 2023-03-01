@@ -19,7 +19,11 @@ static int getMapInfo(t_map *map, int fd)
 					free(line);
 					throwError(UNDEFINED);
 				}
-				free(line);
+				while(line != NULL)
+				{
+					line = get_next_line(fd);
+					free(line);
+				}
 				break;
 			}
 			checkAndSaveInfo(map, line);
@@ -47,8 +51,13 @@ static void measureMap(t_map *map, int fd, int first_line)
 		if (line != NULL)
 		{
 			if (ft_strlen(line) > map->width)
-				map->width = ft_strlen(line);
+				map->width = ft_strlen(line) - 1;
 			map->height++;
+			if(checkIfEmpty(line))
+			{
+				free(line);
+				throwError(EMPTY_LINE);
+			}
 		}
 		free(line);
 	}

@@ -33,8 +33,6 @@ void	parseGrid(t_map *map)
 			j++;
 		}
 		i++;
-		if(!map->grid[i] && i != map->height)
-			throwError(EMPTY_LINE);
 	}
 	if (map->player_dir == 0)
 		throwError(PLAYER);
