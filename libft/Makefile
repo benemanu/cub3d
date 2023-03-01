@@ -6,7 +6,7 @@
 #    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 08:18:10 by shoffman          #+#    #+#              #
-#    Updated: 2023/02/28 10:12:05 by shoffman         ###   ########.fr        #
+#    Updated: 2023/02/28 14:40:54 by shoffman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,19 +29,16 @@ NAME	=	libft.a
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I includes
 
 ${NAME}: ${OBJS}
-	ar rc ${NAME} ${OBJS}
+	@ar rc ${NAME} ${OBJS}
 
 all: ${NAME}
 
 clean:
-	${RM} ${OBJS}
+	@${RM} ${OBJS}
 
 fclean: clean
-	${RM} ${NAME} a.out
+	@${RM} ${NAME} a.out
 	
 re: fclean all
-
-test: ${NAME}
-	${CC} ${CFLAGS} main.c ${NAME} -lbsd
 
 .PHONY: all clean fclean re libft
