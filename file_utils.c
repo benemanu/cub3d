@@ -3,7 +3,7 @@
 int	mapInfoFull(t_map *map)
 {
 	if (map->north_texture && map->south_texture && map->west_texture &&
-		map->east_texture && map->tmp_floor_color && map->tmp_ceiling_color)
+		map->east_texture && map->floor_rgb[0] != 444 && map->ceiling_rgb[0] != 444)
 		return (1);
 	return (0);
 }

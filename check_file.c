@@ -37,7 +37,10 @@ static void measureMap(t_map *map, int fd, int first_line)
 	map->height = 0;
 	map->width = 0;
 	while(first_line-- != 0)
-		free(line = get_next_line(fd));
+	{
+		line = get_next_line(fd);
+		free(line);
+	}
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -62,7 +65,10 @@ static void fillGrid(t_map *map, int fd, int first_line)
 	if (!map->grid)
 		throwError(ALLOCATION);
 	while(first_line-- != 0)
-		free(line = get_next_line(fd));
+	{
+		line = get_next_line(fd);
+		free(line);
+	}
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -96,8 +102,8 @@ static void disectFile(t_map *map, char *filename)
 
 void checkFile(t_map *map, char *filename)
 {
-	map->tmp_ceiling_color = NULL;
-	map->tmp_floor_color = NULL;
+	map->floor_rgb[0] = 444;
+	map->ceiling_rgb[0] = 444;
 	map->north_texture = NULL;
 	map->south_texture = NULL;
 	map->west_texture = NULL;
@@ -106,6 +112,5 @@ void checkFile(t_map *map, char *filename)
 	if (ft_strcmp(&filename[ft_strlen(filename) - 4], ".cub"))
 		throwError(FILE_ENDING);
 	disectFile(map, filename);
-	checkAndSaveColor(map->floor_rgb, map->tmp_floor_color);
-	checkAndSaveColor(map->ceiling_rgb, map->tmp_ceiling_color);
+	parseGrid(map);
 }

@@ -28,6 +28,12 @@ void throwError(int code)
 		printf("\033[1;31mThe map information or the map itself is not correct.\033[0m\n");
 	if(code == COLOR)
 		printf("\033[1;31mThe RGB information is not correct.\033[0m\n");
+	if(code == PLAYER)	
+		printf("\033[1;31mPlayer is missing or too many players.\033[0m\n");
+	if(code == CHARACTER)
+		printf("\033[1;31mThe map contains an invalid character.\033[0m\n");
+	if(code == EMPTY_LINE)
+		printf("\033[1;31mThe map contains an empy line.\033[0m\n");
 	//free
 	exit (0);
 }
