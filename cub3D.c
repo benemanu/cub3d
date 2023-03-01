@@ -22,6 +22,12 @@ void throwError(int code)
 		printf("\033[1;31mFile provided can't be opened.\033[0m\n");
 	if(code == ALLOCATION)
 		printf("\033[1;31mAllocation failed.\033[0m\n");
+	if(code == MAP_INFO)
+		printf("\033[1;31mThe map information is not correct.\033[0m\n");
+	if(code == UNDEFINED)
+		printf("\033[1;31mThe map information or the map itself is not correct.\033[0m\n");
+	if(code == COLOR)
+		printf("\033[1;31mThe RGB information is not correct.\033[0m\n");
 	//free
 	exit (0);
 }

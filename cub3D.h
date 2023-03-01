@@ -11,38 +11,11 @@
 
 #define FILE_ENDING 0
 #define CANNOT_OPEN 1
-#define height 480
-#define width 640
+#define MAP_INFO	2
+#define UNDEFINED	3
+#define COLOR		4
 #define ALLOCATION	99
 
-typedef struct s_img
-{
-	void	*img;
-	int		*data;
-	int		img_width;
-	int		img_height;
-	int 	endian;
-	int 	bpp;
-	int 	line_len;
-}				t_img;
-
-typedef struct s_info
-{
-	double posx;
-	double posy;
-	double dirx;
-	double diry;
-	double planex;
-	double planey;
-	void	*mlx;
-	void	*win;
-	t_img 	img;
-	int 	buff[height][width];
-	double	mov_speed;
-	double	rot_speed;
-	int 	**texture;
-
-}				t_info;
 
 typedef struct s_map
 {
@@ -53,8 +26,10 @@ typedef struct s_map
 	char			*south_texture;
 	char			*west_texture;
 	char			*east_texture;
-	char			*floor_color;
-	char			*ceiling_color;
+	char			*tmp_floor_color;
+	char			*tmp_ceiling_color;
+	int				floor_rgb[3];
+	int				ceiling_rgb[3];
 }	t_map;
 
 //error/exit/free
@@ -65,9 +40,15 @@ void checkFile(t_map *map, char *filename);
 
 //info
 void checkAndSaveInfo(t_map *map, char *str);
+void checkAndSaveColor(int *array, char *str);
 
-//map_utils
-void printGrid(char **grid);
+//file_utils
 int checkIfEmpty(char *str);
+int isFirstLine(char *str);
+void freeSplit(char **strs);
+int mapInfoFull(t_map *map);
+
+//grid_utils
+void printGrid(char **grid);
 
 #endif
