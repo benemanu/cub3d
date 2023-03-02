@@ -9,15 +9,13 @@
 # include <stdlib.h>
 # include <math.h>
 
-#define FILE_ENDING 0
-#define CANNOT_OPEN 1
-#define MAP_INFO	2
-#define UNDEFINED	3
-#define COLOR		4
-#define PLAYER		5
-#define CHARACTER	6
-#define EMPTY_LINE	7
-#define WALLS		8
+#define MAP_INFO	1
+#define UNDEFINED	2
+#define COLOR		3
+#define PLAYER		4
+#define CHARACTER	5
+#define EMPTY_LINE	6
+#define WALLS		7
 #define ALLOCATION	99
 
 typedef struct s_map
