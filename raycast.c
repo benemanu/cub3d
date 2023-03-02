@@ -41,12 +41,13 @@ void    main_raycast(void)
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
     draw(&info);
+    mlx_destroy_window(info.mlx, info.win);
 
    
     // mlx_loop_hook(info.mlx, image_loop, &info);
     // mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_config, &info);
 
-    mlx_loop(info.mlx);
+    // mlx_loop(info.mlx);
 }
 
 void    load_images(t_info *info)
