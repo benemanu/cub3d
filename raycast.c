@@ -2,57 +2,65 @@
 #include "cub3D.h"
 #include "raycast.h"
 
-void    image_loop(t_info *info)
+int    image_loop(t_info *info)
 {
     //calculate the distance to the walls
     draw(info);
+    return (0);
 }
 
 void    draw(t_info *info)
 {
-    if (get_player_facing_angle(info) > 0 && get_player_facing_angle(info) < 180)
-        info->buff[info->img_height][info->img_width] = 0x000000FF;
-    else if (get_player_facing_angle(info) > 180 && get_player_facing_angle(info) < 360)
-        info->buff[info->img_height][info->img_width] = 0x00FF0000;
-    else if (get_player_facing_angle(info) == 0 || get_player_facing_angle(info) == 180)
-        info->buff[info->img_height][info->img_width] = 0x0000FF00;
-    else if (get_player_facing_angle(info) == 90 || get_player_facing_angle(info) == 270)
-        info->buff[info->img_height][info->img_width] = 0x00FFFF00;
-    mlx_pixel_put(info->mlx, info->win, info->img_width, info->img_height, info->buff[info->img_height][info->img_width]);
-    info->img_width++;
-    if (info->img_width == width)
+    int x;
+    int y;
+
+    x = -1;
+    while (++x < width)
     {
-        info->img_width = 0;
-        info->img_height++;
+        y = -1;
+        while (++y < height / 2)
+        {
+            my_mlx_pixel_put(info, x, y, CEILING_COLOR);
+        }
+        while (y < height)
+        {
+            my_mlx_pixel_put(info, x, y, FLOOR_COLOR);
+            y++;
+        }
     }
-    if (info->img_height == height)
-    {
-        info->img_height = 0;
-        info->img_width = 0;
-        //one frame is drawn
-    }
+    mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 }
 
 void    main_raycast(void)
 {
     t_info info;
     init_var(&info);
-    load_img(&info);
+    info.mlx = mlx_init();
+    info.win = mlx_new_window(info.mlx, width, height, "cub3D");
+    info.game.game.img = mlx_new_image(info.mlx, width, height);
+    info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
+    load_images(&info);
     draw(&info);
 
+   
+    // mlx_loop_hook(info.mlx, image_loop, &info);
+    // mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_config, &info);
+
     mlx_loop(info.mlx);
-    mlx_loop_hook(info.mlx, mlx_loop, &info);
-
-    image_loop(info.mlx);
 }
 
-void    load_img(t_info *info)
+void    load_images(t_info *info)
 {
-    load_images_xpm(info, info->texture[0], "./images/bluestone.xpm");
-    load_images_xpm(info, info->texture[1], "./images/redbrick.xpm");
-    load_images_xpm(info, info->texture[2], "./images/purplestone.xpm");
-    load_images_xpm(info, info->texture[3], "./images/mossy.xpm");
+    load_img_north(info, "./images/bluestone.xpm");
+    load_img_east(info, "./images/redbrick.xpm");
+    load_img_west(info, "./images/purplestone.xpm");
+    load_img_south(info, "./images/mossy.xpm");
 }
 
+void my_mlx_pixel_put(t_info *info, int x, int y, int color)
+{
+    char    *dst;
 
-
+    dst = info->game.game.data + (y * info->game.game.size_l + x * (info->game.game.bpp / 8));
+    *(unsigned int*)dst = color;
+}

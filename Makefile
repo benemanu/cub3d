@@ -1,6 +1,13 @@
 SRCS	= 	cub3D.c \
 			check_file.c \
-			utils.c
+			utils.c \
+			main_bene.c \
+			raycast.c \
+			raycast_utils.c \
+			load_img.c \
+			# key_config.c \
+			myfree.c \
+			calculations.c \
 		
 OUT		= 	cub3D
 CC		= 	cc

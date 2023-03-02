@@ -12,8 +12,7 @@
 
 #define FILE_ENDING 0
 #define CANNOT_OPEN 1
-#define height 480
-#define width 640
+#define ALLOCATION 2
 
 typedef struct s_map
 {
