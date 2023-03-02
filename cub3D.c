@@ -1,20 +1,16 @@
 #include "cub3D.h"
 
-int main (int ac, char *argv[])
+void static initStruct(t_map *map)
 {
-	t_map	map;
-
-	if (ac != 2)
-		printf("\033[1;31mInvalid amount of arguments.\033[0m\n");
-	else
-	{
-		checkFile(&map, argv[1]);
-		printGrid(map.grid);
-	}
-	return (0);
+	map->grid = NULL;
+	map->north_texture = NULL;
+	map->south_texture = NULL;
+	map->west_texture = NULL;
+	map->east_texture = NULL;
+	map->error = -1;
 }
 
-void throwError(int code)
+static void printError(t_map *map, int code)
 {
 	if(code == FILE_ENDING)
 		printf("\033[1;31mProvided argument, needs to be a .cub file.\033[0m\n");
@@ -34,6 +30,27 @@ void throwError(int code)
 		printf("\033[1;31mThe map contains an invalid character.\033[0m\n");
 	if(code == EMPTY_LINE)
 		printf("\033[1;31mThe map contains an empy line.\033[0m\n");
-	//free
-	exit (0);
+	if(code == WALLS)
+		printf("\033[1;31mThe map is not surrounded by walls.\033[0m\n");
+	freeMapStruct(map);
+	exit (1);
 }
+
+int main (int ac, char *argv[])
+{
+	t_map	map;
+
+	if (ac != 2)
+		return (printf("\033[1;31mError.\nInvalid amount of arguments.\033[0m\n"));
+	else
+	{
+		initStruct(&map);
+		checkFile(&map, argv[1]);
+		if(map.error != -1)
+			printError(&map, map.error);
+		printGrid(map.grid);
+	}
+	freeMapStruct(&map);
+	return (0);
+}
+

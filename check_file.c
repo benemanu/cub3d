@@ -17,8 +17,14 @@ static int getMapInfo(t_map *map, int fd)
 				if(!isFirstLine(line))
 				{
 					free(line);
-					throwError(UNDEFINED);
+					while(line != NULL)
+					{
+						line = get_next_line(fd);
+						free(line);
+					}
+					map->error = UNDEFINED;
 				}
+				free(line);
 				while(line != NULL)
 				{
 					line = get_next_line(fd);
@@ -56,7 +62,7 @@ static void measureMap(t_map *map, int fd, int first_line)
 			if(checkIfEmpty(line))
 			{
 				free(line);
-				throwError(EMPTY_LINE);
+				map->error = UNDEFINED;
 			}
 		}
 		free(line);
@@ -72,7 +78,7 @@ static void fillGrid(t_map *map, int fd, int first_line)
 	line = "";
 	map->grid = (char **)ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->grid)
-		throwError(ALLOCATION);
+		map->error = ALLOCATION;
 	while(first_line-- != 0)
 	{
 		line = get_next_line(fd);
@@ -94,17 +100,13 @@ static void disectFile(t_map *map, char *filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		throwError(CANNOT_OPEN);
+		exit(printf("\033[1;31mError.\nFile provided can't be opened.\033[0m\n"));
 	first_map_line = getMapInfo(map, fd);
 	close(fd);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		throwError(CANNOT_OPEN);
 	measureMap(map, fd, first_map_line);
 	close(fd);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		throwError(CANNOT_OPEN);
 	fillGrid(map, fd, first_map_line);
 	close(fd);
 }
@@ -113,13 +115,9 @@ void checkFile(t_map *map, char *filename)
 {
 	map->floor_rgb[0] = 444;
 	map->ceiling_rgb[0] = 444;
-	map->north_texture = NULL;
-	map->south_texture = NULL;
-	map->west_texture = NULL;
-	map->east_texture = NULL;
-
 	if (ft_strcmp(&filename[ft_strlen(filename) - 4], ".cub"))
-		throwError(FILE_ENDING);
+		exit(printf("\033[1;31mError.\nProvided argument, needs to be a .cub file.\033[0m\n"));
 	disectFile(map, filename);
+	checkFirstAndLastRow(map);
 	parseGrid(map);
 }

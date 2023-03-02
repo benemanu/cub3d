@@ -17,6 +17,7 @@
 #define PLAYER		5
 #define CHARACTER	6
 #define EMPTY_LINE	7
+#define WALLS		8
 #define ALLOCATION	99
 
 typedef struct s_map
@@ -24,6 +25,7 @@ typedef struct s_map
 	char			**grid;
 	unsigned int	width;
 	unsigned int	height;
+	int 			error;
 	char			*north_texture;
 	char			*south_texture;
 	char			*west_texture;
@@ -35,7 +37,7 @@ typedef struct s_map
 }	t_map;
 
 //error/exit/free
-void throwError(int code);
+void freeMapStruct(t_map *map);
 
 //file
 void checkFile(t_map *map, char *filename);
@@ -51,6 +53,7 @@ int mapInfoFull(t_map *map);
 
 //grid
 void parseGrid(t_map *map);
+void checkFirstAndLastRow(t_map *map);
 
 //grid_utils
 void printGrid(char **grid);
