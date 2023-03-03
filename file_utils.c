@@ -1,14 +1,14 @@
 #include "cub3D.h"
 
-int	mapInfoFull(t_map *map)
+int	ft_map_info_full(t_map *map)
 {
-	if (map->north_texture && map->south_texture && map->west_texture &&
-		map->east_texture && map->floor_rgb[0] != 444 && map->ceiling_rgb[0] != 444)
+	if (map->north_t && map->south_t && map->west_t && map->east_t
+		&& map->floor_rgb[0] != 444 && map->ceiling_rgb[0] != 444)
 		return (1);
 	return (0);
 }
 
-int	isFirstLine(char *str)
+int	ft_is_first_line(char *str)
 {
 	int	i;
 
@@ -22,23 +22,26 @@ int	isFirstLine(char *str)
 	return (1);
 }
 
-int	checkIfEmpty(char *str)
+int	ft_check_if_empty(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	if (str)
 	{
-		if (str[i] != ' ' && str[i] != '\n')
-			return (0);
-		i++;
+		while (str[i])
+		{
+			if (str[i] != ' ' && str[i] != '\n')
+				return (0);
+			i++;
+		}
 	}
 	return (1);
 }
 
-void	freeSplit(char **strs)
+void	ft_free_split(char **strs)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (strs[i])

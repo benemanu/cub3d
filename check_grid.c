@@ -1,6 +1,6 @@
 #include "cub3D.h"
 
-static void	setPlayer(t_map *map, int i, int j)
+static void	ft_set_player(t_map *map, int i, int j)
 {
 	if (map->player_dir == 0)
 	{
@@ -12,35 +12,35 @@ static void	setPlayer(t_map *map, int i, int j)
 		map->error = PLAYER;
 }
 
-static void checkWalls(t_map *map, int x, int y) 
+static void	ft_check_walls(t_map *map, int x, int y)
 {
-    if((map->grid[x + 1][y] == ' ' || !map->grid[x + 1][y]) 
+	if ((map->grid[x + 1][y] == ' ' || !map->grid[x + 1][y])
 	|| (map->grid[x - 1][y] == ' ' || !map->grid[x - 1][y])
-	|| (map->grid[x][y + 1] == ' ' || !map->grid[x][y + 1]) 
+	|| (map->grid[x][y + 1] == ' ' || !map->grid[x][y + 1])
 	|| (map->grid[x][y - 1] == ' ' || !map->grid[x][y - 1]))
 		map->error = WALLS;
 }
 
-void	parseGrid(t_map *map)
+void	ft_parse_grid(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	map->player_dir = 0;
 	while (map->grid[i])
 	{
 		j = 0;
-		while (map->grid[i][j])
+		while (CURR_P)
 		{
-			if (map->grid[i][j] == '0' || map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
-				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
-				checkWalls(map, i, j);
-			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
-				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
-				setPlayer(map, i, j);
-			if (map->grid[i][j] != '0' && map->grid[i][j] != '1' && map->grid[i][j] != 'N' && map->grid[i][j] != ' '
-				&& map->grid[i][j] != 'S' && map->grid[i][j] != 'E' && map->grid[i][j] != 'W')
+			if (CURR_P == '0' || CURR_P == 'N'
+				|| CURR_P == 'S' || CURR_P == 'E' || CURR_P == 'W')
+				ft_check_walls(map, i, j);
+			if (CURR_P == 'N' || CURR_P == 'S'
+				|| CURR_P == 'E' || CURR_P == 'W')
+				ft_set_player(map, i, j);
+			if (CURR_P != '0' && CURR_P != '1' && CURR_P != 'N' && CURR_P != ' '
+				&& CURR_P != 'S' && CURR_P != 'E' && CURR_P != 'W')
 				map->error = CHARACTER;
 			j++;
 		}
@@ -50,29 +50,30 @@ void	parseGrid(t_map *map)
 		map->error = PLAYER;
 }
 
-void checkFirstAndLastRow(t_map *map)
+void	ft_check_first_and_last_row(t_map *map)
 {
-	unsigned int i;
+	unsigned int	i;
 
 	i = 0;
-	while(map->grid[0][i])	
+	while (map->grid[0][i])
 	{
 		if (map->grid[0][i] != ' ' && map->grid[0][i] != '1')
 			map->error = WALLS;
 		i++;
 	}
 	i = 0;
-	while(map->grid[map->height - 1][i])	
+	while (map->grid[map->height - 1][i])
 	{
-		if (map->grid[map->height - 1][i] != ' ' && map->grid[map->height - 1][i] != '1')
+		if (map->grid[map->height - 1][i] != ' ' && map->grid[map->height
+			- 1][i] != '1')
 			map->error = WALLS;
 		i++;
 	}
 }
 
-void printGrid(char **grid)
+void	ft_print_grid(char **grid)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (grid[i])

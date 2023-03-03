@@ -1,33 +1,37 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
+# include "libft/libft.h"
 # include "minilibx-linux/mlx.h"
 # include "minilibx-linux/mlx_int.h"
-# include "libft/libft.h"
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
 # include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
-#define MAP_INFO	1
-#define UNDEFINED	2
-#define COLOR		3
-#define PLAYER		4
-#define CHARACTER	5
-#define EMPTY_LINE	6
-#define WALLS		7
-#define ALLOCATION	99
+# define MAP_INFO 1
+# define UNDEFINED 2
+# define COLOR 3
+# define PLAYER 4
+# define CHARACTER 5
+# define EMPTY_LINE 6
+# define WALLS 7
+# define ENDING 8
+# define CANNOT_OPEN 9
+# define ALLOCATION 99
+
+# define CURR_P map->grid[i][j]
 
 typedef struct s_map
 {
 	char			**grid;
 	unsigned int	width;
 	unsigned int	height;
-	int 			error;
-	char			*north_texture;
-	char			*south_texture;
-	char			*west_texture;
-	char			*east_texture;
+	int				error;
+	char			*north_t;
+	char			*south_t;
+	char			*west_t;
+	char			*east_t;
 	int				floor_rgb[3];
 	int				ceiling_rgb[3];
 	int				player_pos[2];
@@ -35,25 +39,26 @@ typedef struct s_map
 }	t_map;
 
 //error/exit/free
-void freeMapStruct(t_map *map);
+void				ft_free_map_struct(t_map *map);
+void				ft_throw_error(t_map *map, int code);
 
 //file
-void checkFile(t_map *map, char *filename);
+void				ft_check_file(t_map *map, char *filename);
 
 //info
-void checkAndSaveInfo(t_map *map, char *str);
+void				ft_check_and_save_info(t_map *map, char *str);
 
 //file_utils
-int checkIfEmpty(char *str);
-int isFirstLine(char *str);
-void freeSplit(char **strs);
-int mapInfoFull(t_map *map);
+int					ft_check_if_empty(char *str);
+int					ft_is_first_line(char *str);
+void				ft_free_split(char **strs);
+int					ft_map_info_full(t_map *map);
 
 //grid
-void parseGrid(t_map *map);
-void checkFirstAndLastRow(t_map *map);
+void				ft_parse_grid(t_map *map);
+void				ft_check_first_and_last_row(t_map *map);
 
 //grid_utils
-void printGrid(char **grid);
+void				ft_print_grid(char **grid);
 
 #endif
