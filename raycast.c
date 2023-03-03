@@ -1,5 +1,4 @@
 
-#include "cub3D.h"
 #include "raycast.h"
 
 int    image_loop(t_info *info)
@@ -15,14 +14,14 @@ void    draw(t_info *info)
     int y;
 
     x = -1;
-    while (++x < width)
+    while (++x < WIDTH)
     {
         y = -1;
-        while (++y < height / 2)
+        while (++y < HEIGHT / 2)
         {
             my_mlx_pixel_put(info, x, y, CEILING_COLOR);
         }
-        while (y < height)
+        while (y < HEIGHT)
         {
             my_mlx_pixel_put(info, x, y, FLOOR_COLOR);
             y++;
@@ -31,23 +30,21 @@ void    draw(t_info *info)
     mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 }
 
-void    main_raycast(void)
+void    main_raycast(t_map *map)
 {
     t_info info;
+    info.game.map = map->grid;
     init_var(&info);
     info.mlx = mlx_init();
-    info.win = mlx_new_window(info.mlx, width, height, "cub3D");
-    info.game.game.img = mlx_new_image(info.mlx, width, height);
+    info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3D");
+    info.game.game.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
     draw(&info);
-    mlx_destroy_window(info.mlx, info.win);
-
-   
-    // mlx_loop_hook(info.mlx, image_loop, &info);
+    mlx_loop_hook(info.mlx, image_loop, &info);
     // mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_config, &info);
 
-    // mlx_loop(info.mlx);
+    mlx_loop(info.mlx);
 }
 
 void    load_images(t_info *info)

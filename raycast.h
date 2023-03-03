@@ -6,16 +6,8 @@
 # endif
 
 # ifndef FLOOR_COLOR
-# define FLOOR_COLOR 0xA52A2A
+# define FLOOR_COLOR 0x654321
 # endif
-
-#ifndef height 
-#define height 480
-#endif
-
-#ifndef width
-#define width 640
-#endif
 
 #define M_PI 				3.14159265358979323846
 # define X_EVENT_KEY_PRESS  5
@@ -29,6 +21,9 @@
 # define K_Q 12
 # define K_E 14
 # define K_ESC 53
+# define HEIGHT 480
+# define WIDTH 640
+# define FOV 60
 
 #include "cub3D.h"
 
@@ -60,14 +55,11 @@ typedef struct	s_game
 	t_image	west;
 	t_image	east;
 	t_image game;
-
+	char 	**map;
 }				t_game;
 
-typedef struct s_info
+typedef struct s_ray
 {
-	t_game 	game;
-	t_key	key;
-	void 	*image;
 	double	posx;
 	double	posy;
 	double	dirx;
@@ -76,12 +68,38 @@ typedef struct s_info
 	double	raydiry;
 	double	planex;
 	double	planey;
+	double 	camerax;
+	double 	sidedistx;
+	double 	sidedisty;
+	double 	deltadistx;
+	double 	deltadisty;
+	double 	perpwalldist;
+	int 	lineheight;
+	int 	drawstart;
+	int 	drawend;
+	int 	side;
+	int 	hit;
+	int 	mapx;
+	int 	mapy;
+	int		stepx;
+	int		stepy;
+
+}			t_ray;
+
+typedef struct s_info
+{
+	t_game 	game;
+	t_key	key;
+	t_ray 	ray;
+	void 	*image;
+	double	posx;
+	double	posy;
 	int 	side;
 	void	*mlx;
 	void	*win;
 	int		img_width;
 	int		img_height;
-	int		buff[height][width];
+	int		buff[HEIGHT][WIDTH];
 	double	mov_speed;
 	double	rot_speed;
 	int		**texture;
@@ -91,7 +109,7 @@ typedef struct s_info
 
 int    	image_loop(t_info *info);
 void    draw(t_info *info);
-void    main_raycast(void);
+void    main_raycast(t_map *map);
 void    load_images(t_info *info);
 void    init_var(t_info *info);
 void 	my_mlx_pixel_put(t_info *info, int x, int y, int color);

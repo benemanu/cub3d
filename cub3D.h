@@ -8,7 +8,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <math.h>
-# include "raycast.h"
 
 #define FILE_ENDING 0
 #define CANNOT_OPEN 1
@@ -21,6 +20,7 @@ typedef struct s_map
 
 //error/exit/free
 void throwError(int code);
+void    main_raycast(t_map *map);
 
 //map
 void checkFile(t_map *map, char *filename);
