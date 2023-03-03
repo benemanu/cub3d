@@ -1,61 +1,63 @@
 #include "cub3D.h"
 
-static void checkAndSaveInfo(t_map *map, char *str)
+static int	ft_get_map_info(t_map *map, int fd)
 {
-	if(*str == 'C')
-		map->ceiling_color = ft_strdup(str);
-}
-
-static int getMapInfo(t_map *map, int fd)
-{
-	char *line;
-	int line_count;
+	char	*line;
+	int		line_count;
+	int		return_count;
 
 	line = "";
-	line_count = 0;
-	map->ceiling_color = NULL;
-	while(line != NULL)
+	line_count = 1;
+	return_count = 0;
+	while (line != NULL && line_count++)
 	{
 		line = get_next_line(fd);
-		if(!checkIfEmpty(line))
+		if (!ft_check_if_empty(line) && return_count == 0)
 		{
-			if (map->ceiling_color)
+			if (ft_map_info_full(map))
 			{
-				free(line);
-				break;
+				if (!ft_is_first_line(line))
+					map->error = UNDEFINED;
+				return_count = line_count;
 			}
-			checkAndSaveInfo(map, line);
+			if (return_count == 0)
+				ft_check_and_save_info(map, line);
 		}
-		line_count++;
 		free(line);
 	}
-	return (line_count);
-	(void)map;
+	return (return_count - 2);
 }
 
-static void measureMap(t_map *map, int fd, int first_line)
+static void	ft_measure_map(t_map *map, int fd, int first_line)
 {
 	char	*line;
 
 	line = "";
 	map->height = 0;
 	map->width = 0;
-	while(first_line-- != 0)
-		free(line = get_next_line(fd));
+	while (first_line-- != 0)
+	{
+		line = get_next_line(fd);
+		free(line);
+	}
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
 		if (line != NULL)
 		{
 			if (ft_strlen(line) > map->width)
-				map->width = ft_strlen(line);
+				map->width = ft_strlen(line) - 1;
 			map->height++;
+			if (ft_check_if_empty(line))
+			{
+				map->error = EMPTY_LINE;
+			}
 		}
 		free(line);
 	}
 }
 
-static void fillGrid(t_map *map, int fd, int first_line)
+static void	ft_fill_grid(t_map *map, int fd, int first_line)
 {
 	int		i;
 	char	*line;
@@ -64,9 +66,12 @@ static void fillGrid(t_map *map, int fd, int first_line)
 	line = "";
 	map->grid = (char **)ft_calloc(map->height + 1, sizeof(char *));
 	if (!map->grid)
-		throwError(ALLOCATION);
-	while(first_line-- != 0)
-		free(line = get_next_line(fd));
+		map->error = ALLOCATION;
+	while (first_line-- != 0)
+	{
+		line = get_next_line(fd);
+		free(line);
+	}
 	while (line != NULL)
 	{
 		line = get_next_line(fd);
@@ -76,33 +81,43 @@ static void fillGrid(t_map *map, int fd, int first_line)
 	}
 }
 
-static void disectFile(t_map *map, char *filename)
-{	
-	int fd;
-	int first_map_line;
+static void	ft_disect_file(t_map *map, char *filename)
+{
+	int	fd;
+	int	first_map_line;
 
 	fd = open(filename, O_RDONLY);
 	if (fd < 0)
-		throwError(CANNOT_OPEN);
-	first_map_line = getMapInfo(map, fd);
+		ft_throw_error(map, CANNOT_OPEN);
+	first_map_line = ft_get_map_info(map, fd);
 	close(fd);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		throwError(CANNOT_OPEN);
-	measureMap(map, fd, first_map_line);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
+	ft_measure_map(map, fd, first_map_line);
 	close(fd);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
 	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		throwError(CANNOT_OPEN);
-	fillGrid(map, fd, first_map_line);
+	ft_fill_grid(map, fd, first_map_line);
 	close(fd);
 }
 
-void checkFile(t_map *map, char *filename)
+void	ft_check_file(t_map *map, char *filename)
 {
+	map->floor_rgb[0] = 444;
+	map->ceiling_rgb[0] = 444;
 	if (ft_strcmp(&filename[ft_strlen(filename) - 4], ".cub"))
-		throwError(FILE_ENDING);
-	disectFile(map, filename);
-	//checkGrid
-	(void)map;
+		ft_throw_error(map, ENDING);
+	ft_disect_file(map, filename);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
+	ft_check_first_and_last_row(map);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
+	ft_parse_grid(map);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
 }

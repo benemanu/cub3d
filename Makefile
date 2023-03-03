@@ -1,5 +1,9 @@
 SRCS	= 	cub3D.c \
 			check_file.c \
+			file_utils.c \
+			check_info.c \
+			check_grid.c \
+			free.c \
 			utils.c \
 			main_bene.c \
 			raycast.c \
@@ -48,7 +52,7 @@ val:	re
 		--track-origins=yes \
 		--verbose \
 		--log-file=$(VALGR) \
-		./$(OUT)
+		./$(OUT) map.cub
 		@code $(VALGR)
 		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"
 
