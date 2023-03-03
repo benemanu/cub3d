@@ -1,33 +1,27 @@
 #include "cub3D.h"
 
-int main (int ac, char *argv[])
+void static	ft_init_struct(t_map *map)
+{
+	map->grid = NULL;
+	map->north_t = NULL;
+	map->south_t = NULL;
+	map->west_t = NULL;
+	map->east_t = NULL;
+	map->error = 0;
+}
+
+int	main(int ac, char *argv[])
 {
 	t_map	map;
 
 	if (ac != 2)
-		printf("\033[1;31mInvalid amount of arguments.\033[0m\n");
+		return (printf("\033[1;31mError.\nInvalid amount of arguments.\033[0m\n"));
 	else
 	{
-		checkFile(&map, argv[1]);
-		printGrid(map.grid);
+		ft_init_struct(&map);
+		ft_check_file(&map, argv[1]);
+		ft_print_grid(map.grid);
 	}
+	ft_free_map_struct(&map);
 	return (0);
-}
-
-void throwError(int code)
-{
-	if(code == FILE_ENDING)
-		printf("\033[1;31mProvided argument, needs to be a .cub file.\033[0m\n");
-	if(code == CANNOT_OPEN)
-		printf("\033[1;31mFile provided can't be opened.\033[0m\n");
-	if(code == ALLOCATION)
-		printf("\033[1;31mAllocation failed.\033[0m\n");
-	if(code == MAP_INFO)
-		printf("\033[1;31mThe map information is not correct.\033[0m\n");
-	if(code == UNDEFINED)
-		printf("\033[1;31mThe map information or the map itself is not correct.\033[0m\n");
-	if(code == COLOR)
-		printf("\033[1;31mThe RGB information is not correct.\033[0m\n");
-	//free
-	exit (0);
 }

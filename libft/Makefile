@@ -6,7 +6,7 @@
 #    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/07 08:18:10 by shoffman          #+#    #+#              #
-#    Updated: 2023/02/28 14:40:54 by shoffman         ###   ########.fr        #
+#    Updated: 2023/03/02 17:49:13 by shoffman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS	= 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c ft_strl
 OBJS	= 	${SRCS:.c=.o}
 RM		=	rm -f
 CC		=	cc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g
 NAME	=	libft.a
 
 .c.o:

@@ -2,7 +2,8 @@ SRCS	= 	cub3D.c \
 			check_file.c \
 			file_utils.c \
 			check_info.c \
-			grid_utils.c
+			check_grid.c \
+			free.c 
 		
 OUT		= 	cub3D
 CC		= 	cc
