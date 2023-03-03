@@ -3,8 +3,7 @@
 
 int    image_loop(t_info *info)
 {
-    //calculate the distance to the walls
-    draw(info);
+    main_calc(info);
     return (0);
 }
 
@@ -32,8 +31,9 @@ void    draw(t_info *info)
 
 void    main_raycast(t_map *map)
 {
+    (void) map;
     t_info info;
-    info.game.map = map->grid;
+    // info.game.map = map->grid;
     init_var(&info);
     info.mlx = mlx_init();
     info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3D");

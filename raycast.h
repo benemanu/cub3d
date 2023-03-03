@@ -27,6 +27,8 @@
 # define WIDTH 640
 # define FOV 60
 
+// typedef struct s_map t_map;
+
 typedef struct s_key
 {
 	int w;
@@ -91,6 +93,7 @@ typedef struct s_info
 	t_game 	game;
 	t_key	key;
 	t_ray 	ray;
+	t_map	*map;
 	void 	*image;
 	double	posx;
 	double	posy;
@@ -107,7 +110,7 @@ typedef struct s_info
 
 }				t_info;
 
-int    	image_loop(t_info *info);
+int		image_loop(t_info *info);
 void    draw(t_info *info);
 void    main_raycast(t_map *map);
 void    load_images(t_info *info);
@@ -124,6 +127,15 @@ void    load_img_east(t_info *info, char *path);
 
 //key config
 int    key_config(int key, t_info *info);
+
+//calculations
+void    get_direction(t_info *info);
+int 	main_calc(t_info *info);
+void    ray_init(t_info *info);
+void 	drawing (t_info *info, int x, int y);
+void 	calc_dist(t_info *info);
+void    line_calc(t_info *info);
+void 	get_side(t_info *info);
 
 
 #endif
