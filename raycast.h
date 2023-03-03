@@ -27,6 +27,7 @@
 
 #include "cub3D.h"
 
+
 typedef struct s_key
 {
 	int w;
@@ -124,9 +125,6 @@ void    load_img_east(t_info *info, char *path);
 
 //key config
 int    key_config(int key, t_info *info);
-
-//our free
-void 	our_exit(int code);
 
 
 #endif

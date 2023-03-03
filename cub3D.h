@@ -8,6 +8,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include "raycast.h"
 
 # define MAP_INFO 1
 # define UNDEFINED 2
@@ -37,6 +38,17 @@ typedef struct s_map
 	int				player_pos[2];
 	char			player_dir;
 }	t_map;
+
+typedef struct s_key
+{
+	int w;
+	int a;
+	int s;
+	int d;
+	int left;
+	int right;
+	int esc;
+}               t_key;
 
 //error/exit/free
 void				ft_free_map_struct(t_map *map);
