@@ -1,6 +1,8 @@
 #ifndef RAYCAST_H
 #define RAYCAST_H
 
+#include "cub3D.h"
+
 # ifndef CEILING_COLOR
 # define CEILING_COLOR 0xADD8E6
 # endif
@@ -24,9 +26,6 @@
 # define HEIGHT 480
 # define WIDTH 640
 # define FOV 60
-
-#include "cub3D.h"
-
 
 typedef struct s_key
 {
