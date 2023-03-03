@@ -1,32 +1,28 @@
 
 #include "cub3D.h"
+#include "raycast.h"
+#include <math.h>
 
 void    init_var(t_info *info)
 {
-    info->posx = 22.0;
-    info->posy = 11.5;
-    info->dirx = -1;
-    info->diry = 0;
-    info->mlx = mlx_init();
-    info->planex = 0.0;
-    info->planey = 0.66;
+    info->posx = 0;
+    info->posy = 0;
+    info->ray.dirx = -1;
+    info->ray.diry = 0;
+    info->ray.planex = 0.0;
+    info->ray.planey = 0.66;
     info->mov_speed = 0.05;
     info->rot_speed = 0.05;
+    info->img_width = 64;
+    info->img_height = 64;
 }
 
-void    load_images_xpm(t_info *info, int *texture, char *path, t_img *img)
+double get_player_facing_angle(t_info *info)
 {
-    int x;
-    int y;
+    double angle;
 
-    y = -1;
-    img->img = mlx_xpm_file_to_image(info->mlx, path, &img->img_width, &img->img_height);
-    img->data = mlx_get_data_addr(info->win, &img->bpp, &img->line_len, &img->endian);
-    while (++y < img->img_height)
-    {
-        x = -1;
-        while (++x < img->img_width)
-            texture[img->img_width * y + x] = img->data[img->img_width * y + x];
-    }
-    //mlx_destroy_image(info->mlx, img->img);
+    angle = atan2(info->ray.diry, info->ray.dirx);
+    if (angle < 0)
+        angle = 2 * M_PI + angle;
+    return (angle);
 }
