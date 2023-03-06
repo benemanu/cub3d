@@ -25,22 +25,23 @@ void    draw(t_info *info)
             my_mlx_pixel_put(info, x, y, FLOOR_COLOR);
             y++;
         }
+        mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
     }
-    mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 }
 
 void    main_raycast(t_map *map)
 {
-    (void) map;
     t_info info;
-    // info.game.map = map->grid;
     init_var(&info);
+    info.map = map;
+    info.ray.posx = map->player_pos[0];
+    info.ray.posy = map->player_pos[1];
     info.mlx = mlx_init();
     info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3D");
     info.game.game.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
-    draw(&info);
+    //draw(&info);
     mlx_loop_hook(info.mlx, image_loop, &info);
     // mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_config, &info);
 

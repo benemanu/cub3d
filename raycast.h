@@ -23,8 +23,8 @@
 # define K_Q 12
 # define K_E 14
 # define K_ESC 53
-# define HEIGHT 480
-# define WIDTH 640
+# define HEIGHT 720
+# define WIDTH 1280
 # define FOV 60
 
 // typedef struct s_map t_map;
@@ -76,6 +76,12 @@ typedef struct s_ray
 	double 	deltadistx;
 	double 	deltadisty;
 	double 	perpwalldist;
+	double 	wallx;
+	double	mov_speed;
+	double	rot_speed;
+	int		x;
+	int 	texnum;
+	int 	texX;
 	int 	lineheight;
 	int 	drawstart;
 	int 	drawend;
@@ -95,16 +101,11 @@ typedef struct s_info
 	t_ray 	ray;
 	t_map	*map;
 	void 	*image;
-	double	posx;
-	double	posy;
-	int 	side;
 	void	*mlx;
 	void	*win;
 	int		img_width;
 	int		img_height;
 	int		buff[HEIGHT][WIDTH];
-	double	mov_speed;
-	double	rot_speed;
 	int		**texture;
 	int 	hit;
 
@@ -112,7 +113,7 @@ typedef struct s_info
 
 int		image_loop(t_info *info);
 void    draw(t_info *info);
-void    main_raycast(t_map *map);
+void    main_raycast();
 void    load_images(t_info *info);
 void    init_var(t_info *info);
 void 	my_mlx_pixel_put(t_info *info, int x, int y, int color);
@@ -132,10 +133,10 @@ int    key_config(int key, t_info *info);
 void    get_direction(t_info *info);
 int 	main_calc(t_info *info);
 void    ray_init(t_info *info);
-void 	drawing (t_info *info, int x, int y);
+void 	drawing (t_info *info);
 void 	calc_dist(t_info *info);
-void    line_calc(t_info *info);
 void 	get_side(t_info *info);
+void	ray_init1(t_info *info);
 
 
 #endif

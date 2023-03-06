@@ -4,66 +4,46 @@
 
 int main_calc(t_info *info)
 {
-    int y;
-    int x;
-    x = 0;
-    while (x < WIDTH)
+    info->ray.x = 0;
+    draw(info);
+    while (info->ray.x < WIDTH)
     {
-        y = 0;
-        info->ray.camerax = 2 * x / (double)WIDTH - 1;
-        info->ray.dirx = info->ray.dirx + info->ray.planex * info->ray.camerax;
-        info->ray.diry = info->ray.diry + info->ray.planey * info->ray.camerax;
-        info->ray.deltadistx = fabs(1 / info->ray.dirx);
-        info->ray.deltadisty = fabs(1 / info->ray.diry);
-        info->ray.mapx = info->map->player_pos[0];
-        info->ray.mapy = info->map->player_pos[1];
+        ray_init(info);
         get_direction(info);
-        while (info->ray.hit == 0)
-        {
-            get_side(info);
-            if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
-                info->ray.hit = 1;
-            calc_dist(info);
-            line_calc(info);
-            while (y < info->ray.drawend)
-            {
-                drawing(info, x, y);
-                y++;
-            }
-        }
-        x++;  
+        drawing(info);
     }
+    mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
     return (0);
 }
 
-void drawing (t_info *info, int x, int y)
+void drawing (t_info *info)
 {
-    if (info->ray.side == 0)
+    while (info->ray.drawstart < info->ray.drawend)
     {
-        if (info->ray.dirx > 0)
-            my_mlx_pixel_put(info, x, y, info->game.north.buff[y][x]);
+        if (info->ray.side == 0)
+        {
+            if (info->ray.dirx == 0)
+                my_mlx_pixel_put(info, info->ray.drawstart, info->ray.drawstart, info->game.north.buff[info->ray.drawstart][info->ray.x++]);
+            else
+                my_mlx_pixel_put(info, info->ray.drawstart, info->ray.drawstart, info->game.south.buff[info->ray.drawstart][info->ray.x++]);
+        }
         else
-            my_mlx_pixel_put(info, x, y, info->game.east.buff[y][x]);
-    }
-    else
-    {
-        if (info->ray.diry > 0)
-            my_mlx_pixel_put(info, x, y, info->game.west.buff[y][x]);
-        else
-            my_mlx_pixel_put(info, x, y, info->game.south.buff[y][x]);
+        {
+            if (info->ray.diry > 0)
+                my_mlx_pixel_put(info, info->ray.drawstart, info->ray.drawstart, info->game.east.buff[info->ray.drawstart][info->ray.x++]);
+            else
+                my_mlx_pixel_put(info, info->ray.drawstart, info->ray.drawstart, info->game.west.buff[info->ray.drawstart][info->ray.x++]);
+        }
+        info->ray.drawstart++;
     }
 }
 
 void calc_dist(t_info *info)
 {
     if (info->ray.side == 0)
-                info->ray.perpwalldist = (info->ray.sidedistx - info->ray.deltadistx);
-        else
-                info->ray.perpwalldist = (info->ray.sidedistx - info->ray.deltadistx);
-}
-
-void    line_calc(t_info *info)
-{
+        info->ray.perpwalldist = info->ray.sidedistx - info->ray.deltadistx;
+    else
+        info->ray.perpwalldist = info->ray.sidedisty - info->ray.deltadisty;
     info->ray.lineheight = (int)(HEIGHT / info->ray.perpwalldist);
     info->ray.drawstart = -info->ray.lineheight / 2 + HEIGHT / 2;
     if (info->ray.drawstart < 0)
@@ -75,18 +55,24 @@ void    line_calc(t_info *info)
 
 void get_side(t_info *info)
 {
-    if (info->ray.sidedistx < info->ray.sidedisty)
+    while (info->ray.hit == 0)
+    {
+        if (info->ray.sidedistx < info->ray.sidedisty)
         {
             info->ray.sidedistx += info->ray.deltadistx;
             info->ray.mapx += info->ray.stepx;
             info->ray.side = 0;
         }
-    else
+        else
         {
             info->ray.sidedisty += info->ray.deltadisty;
             info->ray.mapy += info->ray.stepy;
             info->ray.side = 1;
         }
+        if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
+            info->ray.hit = 1;
+    }
+    calc_dist(info);
 }
 
 
@@ -112,23 +98,37 @@ void    get_direction(t_info *info)
             info->ray.stepy = 1;
             info->ray.sidedisty = (info->ray.mapy + 1.0 - info->ray.posy) * info->ray.deltadisty;
         }
+    get_side(info);
 }
 
 void    ray_init(t_info *info)
 {
-    info->ray.posx = (double) info->posx + 0.5;
-    info->ray.posy = (double) info->posy + 0.5;
-    info->ray.dirx = 0;
-    info->ray.diry = 0;
-    info->ray.planex = 0;
-    info->ray.planey = 0;
-    info->key.a = 0;
-    info->key.d = 0;
-    info->key.w = 0;
-    info->key.s = 0;
-    info->key.left = 0;
-    info->key.right = 0;
-    info->key.esc = 0;
-    info->ray.perpwalldist = 0;
+    info->ray.posx = info->ray.posx + 0.5;
+    info->ray.posy = info->ray.posy + 0.5;
     info->ray.hit = 0;
+    info->ray.perpwalldist = 0;
+    info->ray.camerax = 2 * info->ray.x / (double)WIDTH - 1;
+    info->ray.dirx = info->ray.dirx + info->ray.planex * info->ray.camerax;
+    info->ray.diry = info->ray.diry + info->ray.planey * info->ray.camerax;
+    info->ray.mapx = (int)info->ray.posx;
+    info->ray.mapy = (int)info->ray.posy;
+    info->ray.mov_speed = 0.1;
+    info->ray.rot_speed = 0.033 * 1.8;
+    ray_init1(info);
+}
+
+void    ray_init1(t_info *info)
+{
+    if (info->ray.diry == 0)
+        info->ray.deltadistx = 0;
+    else if (info->ray.dirx == 0)
+        info->ray.deltadistx = 1;
+    else
+        info->ray.deltadistx = sqrt(1 + (info->ray.diry * info->ray.diry) / (info->ray.dirx * info->ray.dirx));
+    if (info->ray.dirx == 0)
+        info->ray.deltadisty = 0;
+    else if (info->ray.diry == 0)
+        info->ray.deltadisty = 1;
+    else
+        info->ray.deltadisty = sqrt(1 + (info->ray.dirx * info->ray.dirx) / (info->ray.diry * info->ray.diry));
 }
