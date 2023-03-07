@@ -3,8 +3,8 @@
 
 int    image_loop(t_info *info)
 {
-    //calculate the distance to the walls
     draw(info);
+    main_calc(info);
     return (0);
 }
 
@@ -19,40 +19,54 @@ void    draw(t_info *info)
         y = -1;
         while (++y < HEIGHT / 2)
         {
-            my_mlx_pixel_put(info, x, y, CEILING_COLOR);
+            my_mlx_pixel_put(info, x, y, info->c_col);
         }
         while (y < HEIGHT)
         {
-            my_mlx_pixel_put(info, x, y, FLOOR_COLOR);
+            my_mlx_pixel_put(info, x, y, info->f_col);
             y++;
         }
     }
-    mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 }
 
 void    main_raycast(t_map *map)
 {
     t_info info;
-    info.game.map = map->grid;
     init_var(&info);
+    info.map = map;
+    init2(&info);
     info.mlx = mlx_init();
     info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3D");
     info.game.game.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
-    draw(&info);
+    mlx_hook(info.win, 2, 1L << 0, &key_config, &info);
     mlx_loop_hook(info.mlx, image_loop, &info);
-    // mlx_hook(info.win, X_EVENT_KEY_PRESS, 0, &key_config, &info);
+    mlx_hook(info.win, 3, 1L << 1, &key_release, &info);
 
     mlx_loop(info.mlx);
 }
 
+void init2(t_info *info)
+{
+    if (info->map->player_dir == 'N')
+        info->ray.dirx = -1;
+    if (info->map->player_dir == 'S')
+        info->ray.dirx = 1;
+    if (info->map->player_dir == 'E')
+        info->ray.diry = 1;
+    if (info->map->player_dir == 'W')
+        info->ray.diry = -1;
+    info->f_col = (info->map->floor_rgb[0] << 16) | (info->map->floor_rgb[1]) << 8 | info->map->floor_rgb[2];
+    info->c_col = (info->map->ceiling_rgb[0] << 16) | (info->map->ceiling_rgb[1]) << 8 | info->map->ceiling_rgb[2];
+}
+
 void    load_images(t_info *info)
 {
-    load_img_north(info, "./images/bluestone.xpm");
-    load_img_east(info, "./images/redbrick.xpm");
-    load_img_west(info, "./images/purplestone.xpm");
-    load_img_south(info, "./images/mossy.xpm");
+    load_img_north(info, info->map->north_t);
+    load_img_east(info, info->map->east_t);
+    load_img_west(info, info->map->west_t);
+    load_img_south(info, info->map->south_t);
 }
 
 void my_mlx_pixel_put(t_info *info, int x, int y, int color)

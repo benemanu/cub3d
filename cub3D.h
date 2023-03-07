@@ -62,6 +62,6 @@ void				ft_check_first_and_last_row(t_map *map);
 //grid_utils
 void				ft_print_grid(char **grid);
 
-void    main_raycast(t_map *map);
+void    			main_raycast(t_map *map);
 
 #endif

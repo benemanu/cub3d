@@ -7,7 +7,9 @@ SRCS	= 	cub3D.c \
 			raycast.c \
 			raycast_utils.c \
 			load_img.c \
-			# calculations.c \
+			calculations.c \
+			movement.c \
+			key_config.c \
 		
 OUT		= 	cub3D
 CC		= 	cc
@@ -18,7 +20,7 @@ VALGR	= 	valgrind-out.txt
 
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
-
+ 
 all: $(OUT)
 
 $(OUT): $(OBJS)
@@ -40,7 +42,7 @@ fclean:
 
 run: $(OUT)
 	@echo "$(PURPLE)Executing$(CLR_RMV)"
-	@./$(OUT) map.cub
+	@./$(OUT) test.cub
 
 val:	re
 	@echo "$(CYAN)Executing$(CLR_RMV)"

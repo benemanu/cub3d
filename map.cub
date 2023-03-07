@@ -1,17 +1,9 @@
-NO              ./textures/n.xpm          
-
-C           150    ,         184    , 251
-WE               ./textures/w.xpm
-EA     ./textures/e.xpm
-
-
-
-
-F             222,174,98                           
- 
-
-
-SO           ./textures/s.xpm     
+NO ./images/bluestone.xpm
+SO ./images/mossy.xpm
+WE ./images/purplestone.xpm
+EA ./images/redbrick.xpm
+F 92,64,51
+C 173,216,230     
       
 
         1111111111  111111111111
