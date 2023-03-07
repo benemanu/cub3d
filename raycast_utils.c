@@ -5,16 +5,21 @@
 
 void    init_var(t_info *info)
 {
-    info->ray.dirx = -1;
+    info->ray.dirx = 0;
     info->ray.diry = 0;
-    info->ray.planex = 0.0;
-    info->ray.planey = 0.66;
-    info->img_width = 64;
-    info->img_height = 64;
+    info->ray.planex = 0.66;
+    info->ray.planey = 0;
     info->map = NULL;
     struct s_map *map = malloc(sizeof(struct s_map));
     if(!map)
         printf("\033[1;31mError.\nMalloc failed.\033[0m\n");
+    info->key.right = 0;
+    info->key.left = 0;
+    info->key.w = 0;
+    info->key.s = 0;
+    info->key.a = 0;
+    info->key.d = 0;
+    info->key.esc = 0;
 }
 
 double get_player_facing_angle(t_info *info)

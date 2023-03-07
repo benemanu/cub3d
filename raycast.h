@@ -3,23 +3,13 @@
 
 #include "cub3D.h"
 
-# ifndef CEILING_COLOR
-# define CEILING_COLOR 0xADD8E6
-# endif
-
-# ifndef FLOOR_COLOR
-# define FLOOR_COLOR 0x654321
-# endif
-
 #define M_PI 				3.14159265358979323846
-# define X_EVENT_KEY_PRESS  5
-# define X_EVENT_KEY_EXIT   17
 # define K_W 3
 # define K_A 0
 # define K_S 1
 # define K_D 2
-# define K_LEFT 123
-# define K_RIGHT 124
+# define K_LEFT 65361
+# define K_RIGHT 65363
 # define K_Q 12
 # define K_E 14
 # define K_ESC 53
@@ -64,10 +54,10 @@ typedef struct s_ray
 {
 	double	posx;
 	double	posy;
+	double	raydirx;
+	double	raydiry;
 	double	dirx;
 	double	diry;
-	double 	raydirx;
-	double	raydiry;
 	double	planex;
 	double	planey;
 	double 	camerax;
@@ -79,6 +69,9 @@ typedef struct s_ray
 	double 	wallx;
 	double	mov_speed;
 	double	rot_speed;
+	double 	step;
+	double 	texpos;
+	int		texy;
 	int		x;
 	int 	texnum;
 	int 	texX;
@@ -105,6 +98,8 @@ typedef struct s_info
 	void	*win;
 	int		img_width;
 	int		img_height;
+	int		c_col;
+	int		f_col;
 	int		buff[HEIGHT][WIDTH];
 	int		**texture;
 	int 	hit;
@@ -113,10 +108,10 @@ typedef struct s_info
 
 int		image_loop(t_info *info);
 void    draw(t_info *info);
-void    main_raycast();
 void    load_images(t_info *info);
 void    init_var(t_info *info);
 void 	my_mlx_pixel_put(t_info *info, int x, int y, int color);
+void 	init2(t_info *info);
 
 double 	get_player_facing_angle(t_info *info);
 
@@ -127,7 +122,9 @@ void    load_img_west(t_info *info, char *path);
 void    load_img_east(t_info *info, char *path);
 
 //key config
-int    key_config(int key, t_info *info);
+int		key_config(int key, t_info *info);
+int     key_release(int key, t_info *info);
+int     close_window(t_info *info);
 
 //calculations
 void    get_direction(t_info *info);
@@ -137,6 +134,11 @@ void 	drawing (t_info *info);
 void 	calc_dist(t_info *info);
 void 	get_side(t_info *info);
 void	ray_init1(t_info *info);
+
+//movement
+void 	move_forth_back(t_info *info);
+void 	move_left_right(t_info *info);
+void 	rotate(t_info *info);
 
 
 #endif

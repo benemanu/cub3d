@@ -8,6 +8,8 @@ SRCS	= 	cub3D.c \
 			raycast_utils.c \
 			load_img.c \
 			calculations.c \
+			movement.c \
+			key_config.c \
 		
 OUT		= 	cub3D
 CC		= 	cc
@@ -18,7 +20,7 @@ VALGR	= 	valgrind-out.txt
 
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
-
+ 
 all: $(OUT)
 
 $(OUT): $(OBJS)

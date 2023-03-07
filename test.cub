@@ -2,11 +2,14 @@ NO ./images/bluestone.xpm
 SO ./images/mossy.xpm
 WE ./images/purplestone.xpm
 EA ./images/redbrick.xpm
-F 220,100,0
-C 225,30,0 
+F 92,64,51
+C 173,216,230 
 
 111111
 100101
 101001
-1N0001
+100001
+100001
+100N01
+100001
 111111
