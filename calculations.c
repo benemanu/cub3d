@@ -5,8 +5,8 @@
 int main_calc(t_info *info)
 {
     info->ray.x = -1;
-    info->ray.posx = (double)info->map->player_pos[1] + 0.5;
-    info->ray.posy = (double)info->map->player_pos[0] + 0.5;
+    info->ray.posx = info->map->player_pos[0] + 0.5;
+    info->ray.posy = info->map->player_pos[1] + 0.5;
     while (++info->ray.x < WIDTH)
     {
         ray_init(info);
@@ -87,7 +87,7 @@ void get_side(t_info *info)
             info->ray.mapy += info->ray.stepy;
             info->ray.side = 1;
         }
-        if (info->ray.mapx < (int)info->map->height && info->ray.mapy < (int)info->map->width && info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
+        if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
 			info->ray.hit = 1;
     }
     calc_dist(info);
@@ -97,25 +97,25 @@ void get_side(t_info *info)
 void    get_direction(t_info *info)
 {
     if (info->ray.raydirx < 0)
-        {
-            info->ray.stepx = -1;
-            info->ray.sidedistx = (info->ray.posx - info->ray.mapx) * info->ray.deltadistx;
-        }
-        else
-        {
-            info->ray.stepx = 1;
-            info->ray.sidedistx = (info->ray.mapx + 1.0 - info->ray.posx) * info->ray.deltadistx;
-        }
-        if (info->ray.raydiry < 0)
-        {
-            info->ray.stepy = -1;
-            info->ray.sidedisty = (info->ray.posy - info->ray.mapy) * info->ray.deltadisty;
-        }
-        else
-        {
-            info->ray.stepy = 1;
-            info->ray.sidedisty = (info->ray.mapy + 1.0 - info->ray.posy) * info->ray.deltadisty;
-        }
+    {
+        info->ray.stepx = -1;
+        info->ray.sidedistx = (info->ray.posx - info->ray.mapx) * info->ray.deltadistx;
+    }
+    else
+    {
+        info->ray.stepx = 1;
+        info->ray.sidedistx = (info->ray.mapx + 1.0 - info->ray.posx) * info->ray.deltadistx;
+    }
+    if (info->ray.raydiry < 0)
+    {
+        info->ray.stepy = -1;
+        info->ray.sidedisty = (info->ray.posy - info->ray.mapy) * info->ray.deltadisty;
+    }
+    else
+    {
+        info->ray.stepy = 1;
+        info->ray.sidedisty = (info->ray.mapy + 1.0 - info->ray.posy) * info->ray.deltadisty;
+    }
     get_side(info);
 }
 
@@ -140,7 +140,7 @@ void    ray_init1(t_info *info)
     else if (info->ray.raydirx == 0)
         info->ray.deltadistx = 1;
     else
-        info->ray.deltadistx = sqrt(1 + (info->ray.raydiry * info->ray.raydiry) / (info->ray.dirx * info->ray.dirx));
+        info->ray.deltadistx = sqrt(1 + (info->ray.raydiry * info->ray.raydiry) / (info->ray.raydirx * info->ray.raydirx));
     if (info->ray.raydirx == 0)
         info->ray.deltadisty = 0;
     else if (info->ray.raydiry == 0)

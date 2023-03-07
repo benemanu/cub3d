@@ -10,6 +10,8 @@ void    init_var(t_info *info)
     info->ray.planex = 0.66;
     info->ray.planey = 0;
     info->map = NULL;
+    info->ray.posx = 0;
+    info->ray.posy = 0;
     struct s_map *map = malloc(sizeof(struct s_map));
     if(!map)
         printf("\033[1;31mError.\nMalloc failed.\033[0m\n");

@@ -35,15 +35,12 @@ void    main_raycast(t_map *map)
     init_var(&info);
     info.map = map;
     init2(&info);
-    info.ray.posx = map->player_pos[0];
-    info.ray.posy = map->player_pos[1];
     info.mlx = mlx_init();
     info.win = mlx_new_window(info.mlx, WIDTH, HEIGHT, "cub3D");
     info.game.game.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
     mlx_hook(info.win, 2, 1L << 0, &key_config, &info);
-    mlx_hook(info.win, 17, 1L << 17, &close_window, &info);
     mlx_loop_hook(info.mlx, image_loop, &info);
     mlx_hook(info.win, 3, 1L << 1, &key_release, &info);
 

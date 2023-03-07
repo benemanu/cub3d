@@ -4,15 +4,15 @@
 #include "cub3D.h"
 
 #define M_PI 				3.14159265358979323846
-# define K_W 3
-# define K_A 0
-# define K_S 1
-# define K_D 2
+# define K_W 119
+# define K_A 100
+# define K_S 115
+# define K_D 97
 # define K_LEFT 65361
 # define K_RIGHT 65363
 # define K_Q 12
 # define K_E 14
-# define K_ESC 53
+# define K_ESC 65307
 # define HEIGHT 720
 # define WIDTH 1280
 # define FOV 60
