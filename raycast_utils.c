@@ -7,11 +7,9 @@ void    init_var(t_info *info)
 {
     info->ray.dirx = 0;
     info->ray.diry = 0;
-    info->ray.planex = 0.66;
-    info->ray.planey = 0;
+    info->ray.planex = 0;
+    info->ray.planey = 0.66;
     info->map = NULL;
-    info->ray.posx = 0;
-    info->ray.posy = 0;
     struct s_map *map = malloc(sizeof(struct s_map));
     if(!map)
         printf("\033[1;31mError.\nMalloc failed.\033[0m\n");
@@ -22,14 +20,4 @@ void    init_var(t_info *info)
     info->key.a = 0;
     info->key.d = 0;
     info->key.esc = 0;
-}
-
-double get_player_facing_angle(t_info *info)
-{
-    double angle;
-
-    angle = atan2(info->ray.diry, info->ray.dirx);
-    if (angle < 0)
-        angle = 2 * M_PI + angle;
-    return (angle);
 }

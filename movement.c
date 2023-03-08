@@ -5,9 +5,9 @@ void move_forth_back(t_info *info)
 {
     if (info->key.w == 1)
     {
-        if (info->map->grid [(int)(info->ray.posx + (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '0')
+        if (info->map->grid [(int)(info->ray.posx + info->ray.dirx * info->ray.mov_speed * 2)][(int)(info->ray.posy)] == '0')
             info->ray.posx += info->ray.dirx * info->ray.mov_speed;
-        if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + (info->ray.diry * info->ray.mov_speed * 2))] == '0')
+          if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + info->ray.diry * info->ray.mov_speed * 2)] == '0')
             info->ray.posy += info->ray.diry * info->ray.mov_speed;
     }
     if (info->key.s == 1)
@@ -42,21 +42,22 @@ void rotate(t_info *info)
     double old_dirx;
     double old_planex;
 
-    old_dirx = info->ray.dirx;
-    old_planex = info->ray.planex;
     if (info->key.left == 1)
     {
-        
-        info->ray.dirx = info->ray.dirx * cos(info->ray.rot_speed) - info->ray.diry * sin(info->ray.rot_speed);
-        info->ray.diry = old_dirx * sin(info->ray.rot_speed) + info->ray.diry * cos(info->ray.rot_speed);
-        info->ray.planex = info->ray.planex * cos(info->ray.rot_speed) - info->ray.planey * sin(info->ray.rot_speed);
-        info->ray.planey = old_planex * sin(info->ray.rot_speed) + info->ray.planey * cos(info->ray.rot_speed);
+        old_dirx = info->ray.dirx;
+        old_planex = info->ray.planex;
+        info->ray.dirx = info->ray.dirx * cos(info->ray.rot_speed / 2) - info->ray.diry * sin(info->ray.rot_speed / 2);
+        info->ray.diry = old_dirx * sin(info->ray.rot_speed / 2) + info->ray.diry * cos(info->ray.rot_speed / 2);
+        info->ray.planex = info->ray.planex * cos(info->ray.rot_speed / 2) - info->ray.planey * sin(info->ray.rot_speed / 2);
+        info->ray.planey = old_planex * sin(info->ray.rot_speed / 2) + info->ray.planey * cos(info->ray.rot_speed / 2);
     }
     if (info->key.right == 1)
     {
-        info->ray.dirx = info->ray.dirx * cos(-info->ray.rot_speed) - info->ray.diry * sin(-info->ray.rot_speed);
-        info->ray.diry = old_dirx * sin(-info->ray.rot_speed) + info->ray.diry * cos(-info->ray.rot_speed);
-        info->ray.planex = info->ray.planex * cos(-info->ray.rot_speed) - info->ray.planey * sin(-info->ray.rot_speed);
-        info->ray.planey = old_planex * sin(-info->ray.rot_speed) + info->ray.planey * cos(-info->ray.rot_speed);
+        old_dirx = info->ray.dirx;
+        old_planex = info->ray.planex;
+        info->ray.dirx = info->ray.dirx * cos(-info->ray.rot_speed / 2) - info->ray.diry * sin(-info->ray.rot_speed / 2);
+        info->ray.diry = old_dirx * sin(-info->ray.rot_speed / 2) + info->ray.diry * cos(-info->ray.rot_speed / 2);
+        info->ray.planex = info->ray.planex * cos(-info->ray.rot_speed / 2) - info->ray.planey * sin(-info->ray.rot_speed / 2);
+        info->ray.planey = old_planex * sin(-info->ray.rot_speed / 2) + info->ray.planey * cos(-info->ray.rot_speed / 2);
     }
 }

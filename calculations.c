@@ -5,14 +5,13 @@
 int main_calc(t_info *info)
 {
     info->ray.x = -1;
-    info->ray.posx = info->map->player_pos[0] + 0.5;
-    info->ray.posy = info->map->player_pos[1] + 0.5;
     while (++info->ray.x < WIDTH)
     {
         ray_init(info);
         get_direction(info);
         drawing(info);
     }
+    mlx_clear_window(info->mlx, info->win);
     mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
     move_forth_back(info);
     move_left_right(info);
@@ -26,7 +25,7 @@ void drawing (t_info *info)
         info->ray.wallx = info->ray.posy + info->ray.perpwalldist * info->ray.raydiry;
     else
         info->ray.wallx = info->ray.posx + info->ray.perpwalldist * info->ray.raydirx;
-    info->ray.wallx -= floor(info->ray.wallx);
+    info->ray.wallx -= floor((info->ray.wallx));
     info->ray.texX = (int)(info->ray.wallx * (double)64);
     if (info->ray.side == 0 && info->ray.raydirx > 0)
         info->ray.texX = 64 - info->ray.texX - 1;
@@ -87,7 +86,7 @@ void get_side(t_info *info)
             info->ray.mapy += info->ray.stepy;
             info->ray.side = 1;
         }
-        if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
+         if (info->ray.mapx < (int)info->map->height && info->ray.mapy < (int)info->map->width && info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
 			info->ray.hit = 1;
     }
     calc_dist(info);
@@ -129,7 +128,7 @@ void    ray_init(t_info *info)
     info->ray.mapx = (int)info->ray.posx;
     info->ray.mapy = (int)info->ray.posy;
     info->ray.mov_speed = 0.1;
-    info->ray.rot_speed = 0.016 * 1.8;
+    info->ray.rot_speed = 0.033 * 1.8;
     ray_init1(info);
 }
 

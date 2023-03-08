@@ -5,10 +5,7 @@
 int    key_config(int key, t_info *info)
 {
      if (key == K_A)
-    {
         info->key.a = 0;
-        printf("RWARRAWRQAWRAW");
-    }
     else if (key == K_D)
         info->key.d = 1;
     else if (key == K_W)
