@@ -5,9 +5,9 @@
 
 #define M_PI 				3.14159265358979323846
 # define K_W 119
-# define K_A 100
+# define K_A 97
 # define K_S 115
-# define K_D 97
+# define K_D 100
 # define K_LEFT 65361
 # define K_RIGHT 65363
 # define K_Q 12
@@ -69,6 +69,7 @@ typedef struct s_ray
 	double 	wallx;
 	double	mov_speed;
 	double	rot_speed;
+	double  horz_speed;
 	double 	step;
 	double 	texpos;
 	int		texy;

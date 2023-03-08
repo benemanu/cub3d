@@ -86,7 +86,11 @@ void get_side(t_info *info)
             info->ray.mapy += info->ray.stepy;
             info->ray.side = 1;
         }
-         if (info->ray.mapx < (int)info->map->height && info->ray.mapy < (int)info->map->width && info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
+        // if (info->ray.mapx < (int)info->map->height && info->ray.mapy < (int)info->map->width)
+        // {
+        //     exit(0);
+        // }    
+        if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
 			info->ray.hit = 1;
     }
     calc_dist(info);
@@ -128,7 +132,8 @@ void    ray_init(t_info *info)
     info->ray.mapx = (int)info->ray.posx;
     info->ray.mapy = (int)info->ray.posy;
     info->ray.mov_speed = 0.1;
-    info->ray.rot_speed = 0.033 * 1.8;
+    info->ray.horz_speed = 0.05;
+    info->ray.rot_speed = 0.033 * 1.6;
     ray_init1(info);
 }
 
