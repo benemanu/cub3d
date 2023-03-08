@@ -47,7 +47,7 @@ void drawing (t_info *info)
         else
         {
             if (info->ray.raydiry > 0)
-                my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart, info->game.south.buff[info->ray.texX][info->ray.texy]);
+                my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart, info->game.east.buff[info->ray.texX][info->ray.texy]); 
             else
                 my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart, info->game.west.buff[info->ray.texX][info->ray.texy]);
         }
@@ -85,11 +85,7 @@ void get_side(t_info *info)
             info->ray.sidedisty += info->ray.deltadisty;
             info->ray.mapy += info->ray.stepy;
             info->ray.side = 1;
-        }
-        // if (info->ray.mapx < (int)info->map->height && info->ray.mapy < (int)info->map->width)
-        // {
-        //     exit(0);
-        // }    
+        }  
         if (info->map->grid[info->ray.mapx][info->ray.mapy] == '1')
 			info->ray.hit = 1;
     }

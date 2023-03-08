@@ -73,6 +73,7 @@ void init2(t_info *info)
     info->c_col = (info->map->ceiling_rgb[0] << 16) | (info->map->ceiling_rgb[1]) << 8 | info->map->ceiling_rgb[2];
     info->ray.posx = (double)info->map->player_pos[1] + 0.5;
     info->ray.posy = (double)info->map->player_pos[0] + 0.5;
+    info->map->grid[info->map->player_pos[1]][info->map->player_pos[0]] = '0';
 }
 
 void    load_images(t_info *info)
