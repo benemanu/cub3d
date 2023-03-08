@@ -69,6 +69,7 @@ typedef struct s_ray
 	double 	wallx;
 	double	mov_speed;
 	double	rot_speed;
+	double  horz_speed;
 	double 	step;
 	double 	texpos;
 	int		texy;

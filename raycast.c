@@ -3,6 +3,10 @@
 
 int    image_loop(t_info *info)
 {
+    // static double i = 0;
+    // info->ray.posx = (double)info->map->player_pos[1] + i;
+    // info->ray.posy = (double)info->map->player_pos[0] + i;
+    // i += 0.005;
     draw(info);
     main_calc(info);
     return (0);

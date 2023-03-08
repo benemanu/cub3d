@@ -5,16 +5,17 @@ void move_forth_back(t_info *info)
 {
     if (info->key.w == 1)
     {
-        if (!(info->map->grid [(int)(info->ray.posx + (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '1'))
+        if (info->map->grid [(int)(info->ray.posx + (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == 'N' || info->map->grid [(int)(info->ray.posx + (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '0')
             info->ray.posx += info->ray.dirx * info->ray.mov_speed;
-        if (!(info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + (info->ray.diry * info->ray.mov_speed * 2))] == '1'))
+
+        if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + (info->ray.diry * info->ray.mov_speed * 2))] == '0')
             info->ray.posy += info->ray.diry * info->ray.mov_speed;
     }
     if (info->key.s == 1)
     {
-        if (!(info->map->grid [(int)(info->ray.posx - (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '1'))
+        if (info->map->grid [(int)(info->ray.posx - (info->ray.dirx * info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '0')
             info->ray.posx -= info->ray.dirx * info->ray.mov_speed; 
-        if (!(info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy - (info->ray.diry * info->ray.mov_speed * 2))] == '1'))
+        if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy - (info->ray.diry * info->ray.mov_speed * 2))] == '0')
             info->ray.posy -= info->ray.diry * info->ray.mov_speed;
     }
 }
@@ -23,17 +24,17 @@ void move_left_right(t_info *info)
 {
     if (info->key.a == 1)
     {
-        if (!(info->map->grid [(int)(info->ray.posx - info->ray.diry * (info->ray.horz_speed * 2))][(int)(info->ray.posy)] == '1'))
-            info->ray.posx -= info->ray.diry * info->ray.horz_speed;   
-        if (!(info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + info->ray.dirx * (info->ray.horz_speed * 2))] == '1'))
-            info->ray.posy += info->ray.dirx * info->ray.horz_speed;
+        if (info->map->grid [(int)(info->ray.posx - info->ray.diry * (info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '0')
+            info->ray.posx -= info->ray.diry * info->ray.mov_speed;   
+        if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy + info->ray.dirx * (info->ray.mov_speed * 2))] == '0')
+            info->ray.posy += info->ray.dirx * info->ray.mov_speed;
     }    
     if (info->key.d == 1)
     {
-        if (!(info->map->grid [(int)(info->ray.posx + info->ray.diry * (info->ray.horz_speed * 2))][(int)(info->ray.posy)] == '1'))
-            info->ray.posx += info->ray.diry * info->ray.horz_speed;
-        if (!(info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy - info->ray.dirx * (info->ray.horz_speed * 2))] == '1'))
-            info->ray.posy -= info->ray.dirx * info->ray.horz_speed;
+        if (info->map->grid [(int)(info->ray.posx + info->ray.diry * (info->ray.mov_speed * 2))][(int)(info->ray.posy)] == '0')
+            info->ray.posx += info->ray.diry * info->ray.mov_speed;
+        if (info->map->grid [(int)(info->ray.posx)][(int)(info->ray.posy - info->ray.dirx * (info->ray.mov_speed * 2))] == '0')
+            info->ray.posy -= info->ray.dirx * info->ray.mov_speed;
     }
 }
 

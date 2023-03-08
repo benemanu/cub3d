@@ -42,7 +42,7 @@ fclean:
 
 run: $(OUT)
 	@echo "$(PURPLE)Executing$(CLR_RMV)"
-	@./$(OUT) test.cub
+	@./$(OUT) map1.cub
 
 val:	re
 	@echo "$(CYAN)Executing$(CLR_RMV)"
