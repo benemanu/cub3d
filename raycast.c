@@ -40,11 +40,10 @@ void    main_raycast(t_map *map)
     info.game.game.img = mlx_new_image(info.mlx, WIDTH, HEIGHT);
     info.game.game.data = mlx_get_data_addr(info.game.game.img, &info.game.game.bpp, &info.game.game.size_l, &info.game.game.endian);
     load_images(&info);
-    mlx_hook(info.win, 2, 1L << 0, &key_config, &info);
-    mlx_hook(info.win, 17, 1L << 17, &close_window, &info);
     mlx_loop_hook(info.mlx, image_loop, &info);
+    mlx_hook(info.win, 17, 0, close_window, &info);
+    mlx_hook(info.win, 2, 1L << 0, &key_config, &info);
     mlx_hook(info.win, 3, 1L << 1, &key_release, &info);
-
     mlx_loop(info.mlx);
 }
 
