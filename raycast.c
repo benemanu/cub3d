@@ -54,13 +54,21 @@ void    main_raycast(t_map *map)
 void init2(t_info *info)
 {
     if (info->map->player_dir == 'N')
-        info->ray.dirx = -1;
-    if (info->map->player_dir == 'S')
-        info->ray.dirx = 1;
-    if (info->map->player_dir == 'E')
-        info->ray.diry = 1;
-    if (info->map->player_dir == 'W')
-        info->ray.diry = -1;
+		info->ray.dirx = -1;
+	if (info->map->player_dir == 'S')
+		info->ray.dirx = 1;
+	if (info->map->player_dir == 'E')
+		info->ray.diry = 1;
+	if (info->map->player_dir == 'W')
+		info->ray.diry = -1;
+	if (info->map->player_dir == 'N')
+		info->ray.planey = 0.66;
+	if (info->map->player_dir == 'S')
+		info->ray.planey = -0.66;
+	if (info->map->player_dir == 'E')
+		info->ray.planex = 0.66;
+	if (info->map->player_dir == 'W')
+		info->ray.planex = -0.66;
     info->f_col = (info->map->floor_rgb[0] << 16) | (info->map->floor_rgb[1]) << 8 | info->map->floor_rgb[2];
     info->c_col = (info->map->ceiling_rgb[0] << 16) | (info->map->ceiling_rgb[1]) << 8 | info->map->ceiling_rgb[2];
     info->ray.posx = (double)info->map->player_pos[1] + 0.5;

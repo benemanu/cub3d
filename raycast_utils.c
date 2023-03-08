@@ -8,7 +8,7 @@ void    init_var(t_info *info)
     info->ray.dirx = 0;
     info->ray.diry = 0;
     info->ray.planex = 0;
-    info->ray.planey = 0.66;
+    info->ray.planey = 0;
     info->map = NULL;
     struct s_map *map = malloc(sizeof(struct s_map));
     if(!map)
