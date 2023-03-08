@@ -47,7 +47,6 @@ typedef struct	s_game
 	t_image	west;
 	t_image	east;
 	t_image game;
-	char 	**map;
 }				t_game;
 
 typedef struct s_ray
@@ -102,21 +101,18 @@ typedef struct s_info
 	int		c_col;
 	int		f_col;
 	int		buff[HEIGHT][WIDTH];
-	int		**texture;
-	int 	hit;
 
 }				t_info;
 
+//raycast.c
 int		image_loop(t_info *info);
 void    draw(t_info *info);
-void    load_images(t_info *info);
 void    init_var(t_info *info);
 void 	my_mlx_pixel_put(t_info *info, int x, int y, int color);
 void 	init2(t_info *info);
 
-double 	get_player_facing_angle(t_info *info);
-
-//loading xpm files to images
+//load_img.c
+void    load_images(t_info *info);
 void    load_img_north(t_info *info, char *path);
 void    load_img_south(t_info *info, char *path);
 void    load_img_west(t_info *info, char *path);
@@ -130,16 +126,22 @@ int     close_window(t_info *info);
 //calculations
 void    get_direction(t_info *info);
 int 	main_calc(t_info *info);
-void    ray_init(t_info *info);
 void 	drawing (t_info *info);
 void 	calc_dist(t_info *info);
 void 	get_side(t_info *info);
+
+//calculations_utils
 void	ray_init1(t_info *info);
+void    ray_init(t_info *info);
 
 //movement
 void 	move_forth_back(t_info *info);
 void 	move_left_right(t_info *info);
 void 	rotate(t_info *info);
+
+//ray_free.c
+void 	ray_free(t_info *info);
+void	free_images(t_info *info);
 
 
 #endif

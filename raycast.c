@@ -3,10 +3,6 @@
 
 int    image_loop(t_info *info)
 {
-    // static double i = 0;
-    // info->ray.posx = (double)info->map->player_pos[1] + i;
-    // info->ray.posy = (double)info->map->player_pos[0] + i;
-    // i += 0.005;
     draw(info);
     main_calc(info);
     return (0);
@@ -54,25 +50,26 @@ void    main_raycast(t_map *map)
 void init2(t_info *info)
 {
     if (info->map->player_dir == 'N')
-        info->ray.dirx = -1;
-    if (info->map->player_dir == 'S')
-        info->ray.dirx = 1;
-    if (info->map->player_dir == 'E')
-        info->ray.diry = 1;
-    if (info->map->player_dir == 'W')
-        info->ray.diry = -1;
+		info->ray.dirx = -1;
+	if (info->map->player_dir == 'S')
+		info->ray.dirx = 1;
+	if (info->map->player_dir == 'E')
+		info->ray.diry = 1;
+	if (info->map->player_dir == 'W')
+		info->ray.diry = -1;
+	if (info->map->player_dir == 'N')
+		info->ray.planey = 0.66;
+	if (info->map->player_dir == 'S')
+		info->ray.planey = -0.66;
+	if (info->map->player_dir == 'E')
+		info->ray.planex = 0.66;
+	if (info->map->player_dir == 'W')
+		info->ray.planex = -0.66;
     info->f_col = (info->map->floor_rgb[0] << 16) | (info->map->floor_rgb[1]) << 8 | info->map->floor_rgb[2];
     info->c_col = (info->map->ceiling_rgb[0] << 16) | (info->map->ceiling_rgb[1]) << 8 | info->map->ceiling_rgb[2];
     info->ray.posx = (double)info->map->player_pos[1] + 0.5;
     info->ray.posy = (double)info->map->player_pos[0] + 0.5;
-}
-
-void    load_images(t_info *info)
-{
-    load_img_north(info, info->map->north_t);
-    load_img_east(info, info->map->east_t);
-    load_img_west(info, info->map->west_t);
-    load_img_south(info, info->map->south_t);
+    info->map->grid[info->map->player_pos[1]][info->map->player_pos[0]] = '0';
 }
 
 void my_mlx_pixel_put(t_info *info, int x, int y, int color)
