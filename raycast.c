@@ -3,10 +3,6 @@
 
 int    image_loop(t_info *info)
 {
-    // static double i = 0;
-    // info->ray.posx = (double)info->map->player_pos[1] + i;
-    // info->ray.posy = (double)info->map->player_pos[0] + i;
-    // i += 0.005;
     draw(info);
     main_calc(info);
     return (0);
@@ -74,14 +70,6 @@ void init2(t_info *info)
     info->ray.posx = (double)info->map->player_pos[1] + 0.5;
     info->ray.posy = (double)info->map->player_pos[0] + 0.5;
     info->map->grid[info->map->player_pos[1]][info->map->player_pos[0]] = '0';
-}
-
-void    load_images(t_info *info)
-{
-    load_img_north(info, info->map->north_t);
-    load_img_east(info, info->map->east_t);
-    load_img_west(info, info->map->west_t);
-    load_img_south(info, info->map->south_t);
 }
 
 void my_mlx_pixel_put(t_info *info, int x, int y, int color)

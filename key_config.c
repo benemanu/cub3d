@@ -17,7 +17,7 @@ int    key_config(int key, t_info *info)
     else if (key == K_RIGHT)
         info->key.right = 1;
     else if (key == K_ESC)
-        exit(32);
+        ray_free(info);
     return (0);
 }
 
@@ -40,7 +40,6 @@ int     key_release(int key, t_info *info)
 
 int     close_window(t_info *info)
 {
-    (void)info;
-    exit(32);
+    ray_free(info);
     return (0);
 }

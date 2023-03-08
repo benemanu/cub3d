@@ -2,6 +2,14 @@
 #include "cub3D.h"
 #include "raycast.h"
 
+void    load_images(t_info *info)
+{
+    load_img_north(info, info->map->north_t);
+    load_img_east(info, info->map->east_t);
+    load_img_west(info, info->map->west_t);
+    load_img_south(info, info->map->south_t);
+}
+
 void    load_img_north(t_info *info, char *path)
 {
     int x;
