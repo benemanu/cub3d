@@ -10,7 +10,6 @@ void static	ft_init_struct(t_map *map)
 	map->error = 0;
 }
 
-// ft_print_grid(map.grid);
 int	main(int ac, char *argv[])
 {
 	t_map	map;
@@ -25,3 +24,4 @@ int	main(int ac, char *argv[])
 	}
 	return (0);
 }
+// ft_print_grid(map.grid);

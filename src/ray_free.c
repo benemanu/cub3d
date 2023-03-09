@@ -1,13 +1,6 @@
 #include  "../inc/raycast.h"
 
-void	ray_free(t_info *info, t_map *map)
-{
-	ft_free_map_struct(map);
-	free_images(info);
-	exit(0);
-}
-
-void	free_images(t_info *info)
+static void	free_images(t_info *info)
 {
 	if (info->game.game.img)
 		mlx_destroy_image(info->mlx, info->game.game.img);
@@ -25,4 +18,11 @@ void	free_images(t_info *info)
 		mlx_destroy_display(info->mlx);
 	if (info->mlx)
 		free(info->mlx);
+}
+
+void	ray_free(t_info *info, t_map *map)
+{
+	ft_free_map_struct(map);
+	free_images(info);
+	exit(0);
 }
