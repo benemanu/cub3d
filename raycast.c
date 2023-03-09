@@ -39,6 +39,7 @@ void	main_raycast(t_map *map)
 	mlx_hook(info.win, 2, 1L << 0, &key_config, &info);
 	mlx_hook(info.win, 3, 1L << 1, &key_release, &info);
 	mlx_loop(info.mlx);
+	ray_free(&info, map);
 }
 
 void	init2(t_info *info)

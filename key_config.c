@@ -16,7 +16,7 @@ int	key_config(int key, t_info *info)
 	else if (key == K_RIGHT)
 		info->key.right = 1;
 	else if (key == K_ESC)
-		ray_free(info);
+		mlx_loop_end(info->mlx);
 	return (0);
 }
 
@@ -39,6 +39,6 @@ int	key_release(int key, t_info *info)
 
 int	close_window(t_info *info)
 {
-	ray_free(info);
+	mlx_loop_end(info->mlx);
 	return (0);
 }

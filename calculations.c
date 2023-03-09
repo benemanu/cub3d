@@ -20,6 +20,7 @@ int	main_calc(t_info *info)
 
 void	drawing(t_info *info)
 {
+	int color;
 	if (info->ray.side == 0)
 		info->ray.wallx = info->ray.posy + info->ray.perpwalldist
 			* info->ray.raydiry;
@@ -43,22 +44,32 @@ void	drawing(t_info *info)
 		if (info->ray.side == 0)
 		{
 			if (info->ray.raydirx > 0)
+			{
+				color = *(int *)(info->game.south.data + (info->ray.texX * (info->game.south.bpp / 8) + info->ray.texy * info->game.south.size_l));
 				my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart,
-						info->game.south.buff[info->ray.texX][info->ray.texy]);
-					//south
+						color);
+			}
 			else
+			{
+				color = *(int *)(info->game.north.data + (info->ray.texX * (info->game.north.bpp / 8) + info->ray.texy * info->game.north.size_l));
 				my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart,
-						info->game.north.buff[info->ray.texX][info->ray.texy]);
-					//north
+						color);
+			}
 		}
 		else
 		{
 			if (info->ray.raydiry > 0)
+			{
+				color = *(int *)(info->game.east.data + (info->ray.texX * (info->game.east.bpp / 8) + info->ray.texy * info->game.east.size_l));
 				my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart,
-						info->game.east.buff[info->ray.texX][info->ray.texy]);
+						color);
+			}
 			else
+			{
+				color = *(int *)(info->game.west.data + (info->ray.texX * (info->game.west.bpp / 8) + info->ray.texy * info->game.west.size_l));
 				my_mlx_pixel_put(info, info->ray.x, info->ray.drawstart,
-						info->game.west.buff[info->ray.texX][info->ray.texy]);
+						color);
+			}
 		}
 		info->ray.drawstart++;
 	}

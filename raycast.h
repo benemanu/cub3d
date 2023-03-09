@@ -37,7 +37,6 @@ typedef struct	s_image
 	int		size_l;
 	int		bpp;
 	int		endian;
-	int 	buff[64][64];
 }				t_image;
 
 typedef struct	s_game
@@ -98,7 +97,6 @@ typedef struct s_info
 	int		img_height;
 	int		c_col;
 	int		f_col;
-
 }				t_info;
 
 //raycast.c
@@ -137,7 +135,7 @@ void 	move_left_right(t_info *info);
 void 	rotate(t_info *info);
 
 //ray_free.c
-void 	ray_free(t_info *info);
+void	ray_free(t_info *info, t_map *map);
 void	free_images(t_info *info);
 
 
