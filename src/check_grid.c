@@ -1,4 +1,4 @@
-#include "cub3D.h"
+#include  "../inc/input.h"
 
 static void	ft_set_player(t_map *map, int i, int j)
 {

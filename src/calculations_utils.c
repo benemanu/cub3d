@@ -1,4 +1,4 @@
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 void	ray_init(t_info *info)
 {

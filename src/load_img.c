@@ -1,6 +1,4 @@
-
-#include "cub3D.h"
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 void    load_images(t_info *info)
 {

@@ -1,5 +1,4 @@
-#include "cub3D.h"
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 int	key_config(int key, t_info *info)
 {

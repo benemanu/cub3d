@@ -1,4 +1,4 @@
-#include "cub3D.h"
+#include  "../inc/input.h"
 
 static void	ft_free_grid(t_map *map)
 {

@@ -1,4 +1,4 @@
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 void	ray_free(t_info *info, t_map *map)
 {
@@ -25,9 +25,4 @@ void	free_images(t_info *info)
 		mlx_destroy_display(info->mlx);
 	if (info->mlx)
 		free(info->mlx);
-	// if (info->map)
-	// {
-	// 	printf("Test");
-	// 	free(info->map);
-	// }
 }

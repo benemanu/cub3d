@@ -1,4 +1,4 @@
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 int	image_loop(t_info *info)
 {

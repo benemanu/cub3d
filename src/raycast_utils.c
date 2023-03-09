@@ -1,6 +1,4 @@
-#include "cub3D.h"
-#include "raycast.h"
-#include <math.h>
+#include  "../inc/raycast.h"
 
 void	init_var(t_info *info)
 {

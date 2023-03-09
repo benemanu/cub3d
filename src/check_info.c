@@ -1,4 +1,4 @@
-#include "cub3D.h"
+#include  "../inc/input.h"
 
 static int	ft_is_rgb(char *str)
 {

@@ -1,4 +1,4 @@
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 void	move_forth_back(t_info *info)
 {

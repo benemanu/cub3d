@@ -1,7 +1,14 @@
 #ifndef RAYCAST_H
 #define RAYCAST_H
 
-#include "cub3D.h"
+# include  "../inc/input.h"
+# include "../libft/libft.h"
+# include "../minilibx-linux/mlx.h"
+# include "../minilibx-linux/mlx_int.h"
+# include <math.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
 
 #define M_PI 				3.14159265358979323846
 # define K_W 119

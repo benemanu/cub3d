@@ -1,5 +1,4 @@
-#include "cub3D.h"
-#include "raycast.h"
+#include  "../inc/raycast.h"
 
 int	main_calc(t_info *info)
 {

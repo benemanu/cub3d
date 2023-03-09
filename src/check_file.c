@@ -1,4 +1,4 @@
-#include "cub3D.h"
+#include  "../inc/input.h"
 
 static int	ft_get_map_info(t_map *map, int fd)
 {

@@ -1,17 +1,17 @@
-SRCS	= 	cub3D.c \
-			check_file.c \
-			file_utils.c \
-			check_info.c \
-			check_grid.c \
-			free.c \
-			raycast.c \
-			raycast_utils.c \
-			load_img.c \
-			calculations.c \
-			movement.c \
-			key_config.c \
-			ray_free.c \
-			calculations_utils.c \
+SRCS	= 	src/main.c \
+			src/check_file.c \
+			src/file_utils.c \
+			src/check_info.c \
+			src/check_grid.c \
+			src/free_input.c \
+			src/raycast.c \
+			src/raycast_utils.c \
+			src/load_img.c \
+			src/calculations.c \
+			src/movement.c \
+			src/key_config.c \
+			src/ray_free.c \
+			src/calculations_utils.c \
 		
 OUT		= 	cub3D
 CC		= 	cc
