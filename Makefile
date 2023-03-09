@@ -53,7 +53,6 @@ val:	re
 		--track-origins=yes \
 		--verbose \
 		--log-file=$(VALGR) \
-		--max-stackframe=3768784 \
 		./$(OUT) ./maps/map1.cub
 		@code $(VALGR)
 		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"
