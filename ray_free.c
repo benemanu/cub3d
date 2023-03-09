@@ -1,10 +1,10 @@
 #include "raycast.h"
 
-void	ray_free(t_info *info)
+void	ray_free(t_info *info, t_map *map)
 {
-	ft_free_map_struct(info->map);
-	exit(0);
+	ft_free_map_struct(map);
 	free_images(info);
+	exit(0);
 }
 
 void	free_images(t_info *info)
@@ -19,7 +19,15 @@ void	free_images(t_info *info)
 		mlx_destroy_image(info->mlx, info->game.west.img);
 	if (info->game.east.img)
 		mlx_destroy_image(info->mlx, info->game.east.img);
-	if (info->win)
+	if (info->win && info->mlx)
 		mlx_destroy_window(info->mlx, info->win);
-	free(info->mlx);
+	if (info->mlx)
+		mlx_destroy_display(info->mlx);
+	if (info->mlx)
+		free(info->mlx);
+	// if (info->map)
+	// {
+	// 	printf("Test");
+	// 	free(info->map);
+	// }
 }
