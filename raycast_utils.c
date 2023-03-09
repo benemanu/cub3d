@@ -8,9 +8,8 @@ void	init_var(t_info *info)
 	info->ray.diry = 0;
 	info->ray.planex = 0;
 	info->ray.planey = 0;
-	info->map = NULL;
-	struct s_map *map = malloc(sizeof(struct s_map));
-	if (!map)
+	info->map = malloc(sizeof(t_map));
+	if (!info->map)
 		printf("\033[1;31mError.\nMalloc failed.\033[0m\n");
 	info->key.right = 0;
 	info->key.left = 0;

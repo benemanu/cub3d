@@ -35,6 +35,7 @@ void	drawing(t_info *info)
 	info->ray.step = 1.0 * 64 / info->ray.lineheight;
 	info->ray.texpos = (info->ray.drawstart - HEIGHT / 2 + info->ray.lineheight
 			/ 2) * info->ray.step;
+	draw(info->ray.drawstart, info->ray.drawend, info);
 	while (info->ray.drawstart < info->ray.drawend)
 	{
 		info->ray.texy = (int)info->ray.texpos & (64 - 1);

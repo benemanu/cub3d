@@ -2,36 +2,28 @@
 
 int	image_loop(t_info *info)
 {
-	draw(info);
 	main_calc(info);
 	return (0);
 }
 
-void	draw(t_info *info)
+void	draw(int start, int end, t_info *info)
 {
-	int	x;
 	int	y;
-
-	x = -1;
-	while (++x < WIDTH)
+	y = -1;
+	while (++y < start)
 	{
-		y = -1;
-		while (++y < HEIGHT / 2)
-		{
-			my_mlx_pixel_put(info, x, y, info->c_col);
-		}
-		while (y < HEIGHT)
-		{
-			my_mlx_pixel_put(info, x, y, info->f_col);
-			y++;
-		}
+		my_mlx_pixel_put(info, info->ray.x, y, info->c_col);
+	}
+	while (end < HEIGHT)
+	{
+		my_mlx_pixel_put(info, info->ray.x, end, info->f_col);
+		end++;
 	}
 }
 
 void	main_raycast(t_map *map)
 {
 	t_info	info;
-
 	init_var(&info);
 	info.map = map;
 	init2(&info);
@@ -77,7 +69,7 @@ void	init2(t_info *info)
 void	my_mlx_pixel_put(t_info *info, int x, int y, int color)
 {
 	char *dst;
-
+	
 	dst = info->game.game.data + (y * info->game.game.size_l + x
 			* (info->game.game.bpp / 8));
 	*(unsigned int *)dst = color;

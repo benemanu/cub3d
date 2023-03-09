@@ -24,7 +24,6 @@ void    load_img_north(t_info *info, char *path)
         while (++y < info->img_width)
             info->game.north.buff[x][y] = *(int *)(info->game.north.data + (x * (info->game.north.bpp / 8) + y * info->game.north.size_l));
     }
-    mlx_destroy_image(info->mlx, info->game.north.img);
 }
 
 void    load_img_south(t_info *info, char *path)
@@ -43,7 +42,6 @@ void    load_img_south(t_info *info, char *path)
             info->game.south.buff[x][y] = *(int *)(info->game.south.data + (x * (info->game.south.bpp / 8) + y * info->game.south.size_l));
         }
     }
-    mlx_destroy_image(info->mlx, info->game.south.img);
 }
 
 void    load_img_west(t_info *info, char *path)
@@ -62,7 +60,6 @@ void    load_img_west(t_info *info, char *path)
             info->game.west.buff[x][y] = *(int *)(info->game.west.data + (x * (info->game.west.bpp / 8) + y * info->game.west.size_l));
         }
     }
-    mlx_destroy_image(info->mlx, info->game.west.img);
 }
 
 void    load_img_east(t_info *info, char *path)
@@ -81,5 +78,4 @@ void    load_img_east(t_info *info, char *path)
             info->game.east.buff[x][y] = *(int *)(info->game.east.data + (x * (info->game.east.bpp / 8) + y * info->game.east.size_l));
         }
     }
-    mlx_destroy_image(info->mlx, info->game.east.img);
 }

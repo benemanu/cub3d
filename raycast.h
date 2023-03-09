@@ -44,7 +44,7 @@ typedef struct	s_game
 {
 	t_image	north;
 	t_image	south;
-	t_image	west;
+	t_image	west; 
 	t_image	east;
 	t_image game;
 }				t_game;
@@ -84,7 +84,6 @@ typedef struct s_ray
 	int 	mapy;
 	int		stepx;
 	int		stepy;
-
 }			t_ray;
 
 typedef struct s_info
@@ -93,7 +92,6 @@ typedef struct s_info
 	t_key	key;
 	t_ray 	ray;
 	t_map	*map;
-	void 	*image;
 	void	*mlx;
 	void	*win;
 	int		img_width;
@@ -106,7 +104,7 @@ typedef struct s_info
 
 //raycast.c
 int		image_loop(t_info *info);
-void    draw(t_info *info);
+void	draw(int start, int end, t_info *info);
 void    init_var(t_info *info);
 void 	my_mlx_pixel_put(t_info *info, int x, int y, int color);
 void 	init2(t_info *info);
