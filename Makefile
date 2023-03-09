@@ -7,7 +7,11 @@ SRCS	= 	cub3D.c \
 			raycast.c \
 			raycast_utils.c \
 			load_img.c \
-			# calculations.c \
+			calculations.c \
+			movement.c \
+			key_config.c \
+			ray_free.c \
+			calculations_utils.c \
 		
 OUT		= 	cub3D
 CC		= 	cc
@@ -18,7 +22,7 @@ VALGR	= 	valgrind-out.txt
 
 .c.o:
 	$(CC) $(FLAGS) -c $< -o $(<:.c=.o)
-
+ 
 all: $(OUT)
 
 $(OUT): $(OBJS)
@@ -40,7 +44,7 @@ fclean:
 
 run: $(OUT)
 	@echo "$(PURPLE)Executing$(CLR_RMV)"
-	@./$(OUT) map.cub
+	@./$(OUT) ./maps/map1.cub
 
 val:	re
 	@echo "$(CYAN)Executing$(CLR_RMV)"
@@ -49,7 +53,7 @@ val:	re
 		--track-origins=yes \
 		--verbose \
 		--log-file=$(VALGR) \
-		./$(OUT) map.cub
+		./$(OUT) ./maps/map1.cub
 		@code $(VALGR)
 		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"
 

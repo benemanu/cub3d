@@ -23,6 +23,5 @@ int	main(int ac, char *argv[])
 		ft_print_grid(map.grid);
         // main_raycast(&map);
 	}
-	ft_free_map_struct(&map);
 	return (0);
 }
