@@ -49,6 +49,8 @@ void	ft_throw_error(t_map *map, int code)
 		printf("\033[1;31mError.\nThe file does not have a .cub ending.\033[0m\n");
 	if (code == CANNOT_OPEN)
 		printf("\033[1;31mError.\nThe file provided cannot be opened.\033[0m\n");
+	if (code == TEXTURE)
+		printf("\033[1;31mError.\nThe textures provided can't be opened.\033[0m\n");
 	ft_free_map_struct(map);
 	exit(0);
 }

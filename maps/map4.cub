@@ -1,0 +1,16 @@
+NO ./textures/tile_map/tile_texture_1
+SO ./textures/tile_map/tile_texture_2
+WE ./textures/tile_map/tile_texture_3
+EA ./textures/tile_map/tile_texture_4
+
+F 4,5,40
+C 233,211,161
+
+111111
+100101
+101001
+100001
+100001
+100001
+10N001
+111111

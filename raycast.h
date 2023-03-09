@@ -98,7 +98,6 @@ typedef struct s_info
 	int		img_height;
 	int		c_col;
 	int		f_col;
-	int		buff[HEIGHT][WIDTH];
 
 }				t_info;
 

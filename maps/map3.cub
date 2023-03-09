@@ -1,0 +1,16 @@
+NO ./textures/brick_map/brick_texture_1
+SO ./textures/brick_map/brick_texture_2
+WE ./textures/brick_map/brick_texture_3
+EA ./textures/brick_map/brick_texture_4
+
+F 30,84,30
+C 10,10,10 
+
+111111
+100101
+101001
+100001
+100001
+100001
+10N001
+111111

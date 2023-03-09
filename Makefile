@@ -26,7 +26,8 @@ VALGR	= 	valgrind-out.txt
 all: $(OUT)
 
 $(OUT): $(OBJS)
-	@$(MAKE) all -C ./libft
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./minilibx-linux
 	@$(CC) $(FLAGS) -o $(OUT) $(OBJS) $(XFLAGS) ./libft/libft.a
 	@echo "$(GREEN)Compiled$(CLR_RMV)"
 
@@ -35,11 +36,13 @@ re:	clean all
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) clean -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 fclean:
 	@rm -f $(OBJS) $(OUT) $(VALGR)
 	@$(MAKE) fclean -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 run: $(OUT)
@@ -53,7 +56,6 @@ val:	re
 		--track-origins=yes \
 		--verbose \
 		--log-file=$(VALGR) \
-		--max-stackframe=3768784 \
 		./$(OUT) ./maps/map1.cub
 		@code $(VALGR)
 		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"

@@ -1,10 +1,10 @@
-NO ./images/bluestone.xpm
-SO ./images/mossy.xpm
-WE ./images/purplestone.xpm
-EA ./images/redbrick.xpm
-F 92,64,51
-C 173,216,230     
-      
+NO ./textures/lab_map/lab_texture_1
+SO ./textures/lab_map/lab_texture_2
+WE ./textures/lab_map/lab_texture_3
+EA ./textures/lab_map/lab_texture_4
+
+F 50,50,50
+C 246,231,250     
 
         1111111111  111111111111
         10000000001   10000000001
