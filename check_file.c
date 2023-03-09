@@ -114,6 +114,9 @@ void	ft_check_file(t_map *map, char *filename)
 	ft_disect_file(map, filename);
 	if (map->error != 0)
 		ft_throw_error(map, map->error);
+	ft_check_texture_files(map);
+	if (map->error != 0)
+		ft_throw_error(map, map->error);
 	ft_check_first_and_last_row(map);
 	if (map->error != 0)
 		ft_throw_error(map, map->error);

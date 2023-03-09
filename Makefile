@@ -26,7 +26,8 @@ VALGR	= 	valgrind-out.txt
 all: $(OUT)
 
 $(OUT): $(OBJS)
-	@$(MAKE) all -C ./libft
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./minilibx-linux
 	@$(CC) $(FLAGS) -o $(OUT) $(OBJS) $(XFLAGS) ./libft/libft.a
 	@echo "$(GREEN)Compiled$(CLR_RMV)"
 
@@ -35,11 +36,13 @@ re:	clean all
 clean:
 	@rm -f $(OBJS)
 	@$(MAKE) clean -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 fclean:
 	@rm -f $(OBJS) $(OUT) $(VALGR)
 	@$(MAKE) fclean -C ./libft
+	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 run: $(OUT)

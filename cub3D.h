@@ -18,6 +18,7 @@
 # define WALLS 7
 # define ENDING 8
 # define CANNOT_OPEN 9
+# define TEXTURE 10
 # define ALLOCATION 99
 
 # define CURR_P map->grid[i][j]
@@ -47,12 +48,14 @@ void				ft_check_file(t_map *map, char *filename);
 
 //info
 void				ft_check_and_save_info(t_map *map, char *str);
+int					ft_check_texture_files(t_map *map);
 
 //file_utils
 int					ft_check_if_empty(char *str);
 int					ft_is_first_line(char *str);
 void				ft_free_split(char **strs);
 int					ft_map_info_full(t_map *map);
+
 
 //grid
 void				ft_parse_grid(t_map *map);

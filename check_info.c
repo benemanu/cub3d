@@ -69,3 +69,30 @@ void	ft_check_and_save_info(t_map *map, char *str)
 		map->error = MAP_INFO;
 	ft_free_split(temp);
 }
+
+int ft_check_texture_files(t_map *map)
+{
+	int fd;
+
+	fd = open(map->north_t, O_RDONLY);
+	if(fd >= 0)	
+		close(fd);
+	else
+		return(map->error = TEXTURE);
+	fd = open(map->south_t, O_RDONLY);
+	if(fd >= 0)	
+		close(fd);
+	else
+		return(map->error = TEXTURE);
+	fd = open(map->west_t, O_RDONLY);
+	if(fd >= 0)	
+		close(fd);
+	else
+		return(map->error = TEXTURE);
+	fd = open(map->east_t, O_RDONLY);
+	if(fd >= 0)	
+		close(fd);
+	else
+		return(map->error = TEXTURE);
+	return (0);
+}
