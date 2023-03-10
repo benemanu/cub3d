@@ -26,7 +26,8 @@ SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/movement_bonus.c \
 				src_bonus/key_config_bonus.c \
 				src_bonus/ray_free_bonus.c \
-				src_bonus/calculations_utils_bonus.c 
+				src_bonus/calculations_utils_bonus.c \
+				src_bonus/minimap.c \
 		
 		
 OUT		= 	cub3D

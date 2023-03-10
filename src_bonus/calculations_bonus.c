@@ -104,6 +104,7 @@ int	ft_main_calc(t_info *info)
 		ft_calc_pixel(info);
 		ft_drawing(info);
 	}
+	ft_draw_minimap(info);
 	mlx_clear_window(info->mlx, info->win);
 	mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 	ft_move_forth_back(info);

@@ -134,4 +134,7 @@ void		ft_rotate(t_info *info);
 //ray_free
 void		ft_ray_free(t_info *info, t_map *map);
 
+//minimap.c
+void		ft_draw_minimap(t_info *info);
+
 #endif
