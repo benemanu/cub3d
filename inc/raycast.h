@@ -75,10 +75,11 @@ typedef struct s_ray
 	double	horz_speed;
 	double	step;
 	double	texpos;
+	int		color;
 	int		texy;
 	int		x;
 	int		texnum;
-	int		texX;
+	int		texx;
 	int		lineheight;
 	int		drawstart;
 	int		drawend;
@@ -105,36 +106,32 @@ typedef struct s_info
 }			t_info;
 
 //raycast.c
-int			image_loop(t_info *info);
-void		draw(int start, int end, t_info *info);
-void		init_var(t_info *info);
-void		my_mlx_pixel_put(t_info *info, int x, int y, int color);
-void		init2(t_info *info);
+void		ft_draw(int start, int end, t_info *info);
+void		ft_init_var(t_info *info);
+void		ft_my_mlx_pixel_put(t_info *info, int x, int y, int color);
 
 //load_images
-void		load_images(t_info *info);
+void		ft_load_images(t_info *info);
 
 //key config
-int			key_config(int key, t_info *info);
-int			key_release(int key, t_info *info);
-int			close_window(t_info *info);
+int			ft_key_config(int key, t_info *info);
+int			ft_key_release(int key, t_info *info);
+int			ft_close_window(t_info *info);
 
 //calculations
-void		get_direction(t_info *info);
-int			main_calc(t_info *info);
-void		drawing(t_info *info);
-void		calc_dist(t_info *info);
-void		get_side(t_info *info);
+int			ft_main_calc(t_info *info);
 
 //calculations_utils
-void		ray_init(t_info *info);
+void		ft_ray_init(t_info *info);
+void		ft_calc_pixel(t_info *info);
+int			ft_get_color(t_info *info, int ind);
 
 //movement
-void		move_forth_back(t_info *info);
-void		move_left_right(t_info *info);
-void		rotate(t_info *info);
+void		ft_move_forth_back(t_info *info);
+void		ft_move_left_right(t_info *info);
+void		ft_rotate(t_info *info);
 
 //ray_free
-void		ray_free(t_info *info, t_map *map);
+void		ft_ray_free(t_info *info, t_map *map);
 
 #endif
