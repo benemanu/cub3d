@@ -1,6 +1,6 @@
-#include  "../inc/raycast.h"
+#include "../inc/raycast.h"
 
-int	key_config(int key, t_info *info)
+int	ft_key_config(int key, t_info *info)
 {
 	if (key == K_A)
 		info->key.a = 1;
@@ -19,7 +19,7 @@ int	key_config(int key, t_info *info)
 	return (0);
 }
 
-int	key_release(int key, t_info *info)
+int	ft_key_release(int key, t_info *info)
 {
 	if (key == K_A)
 		info->key.a = 0;
@@ -36,7 +36,7 @@ int	key_release(int key, t_info *info)
 	return (0);
 }
 
-int	close_window(t_info *info)
+int	ft_close_window(t_info *info)
 {
 	mlx_loop_end(info->mlx);
 	return (0);

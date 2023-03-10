@@ -1,6 +1,6 @@
-#include  "../inc/raycast.h"
+#include "../inc/raycast.h"
 
-void	init_var(t_info *info)
+void	ft_init_var(t_info *info)
 {
 	info->ray.dirx = 0;
 	info->ray.diry = 0;
