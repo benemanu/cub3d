@@ -1,4 +1,4 @@
-#include  "../inc/input.h"
+#include  "../inc_bonus/input_bonus.h"
 
 static int	ft_get_map_info(t_map *map, int fd)
 {

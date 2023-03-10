@@ -1,4 +1,4 @@
-#include  "../inc/input.h"
+#include  "../inc_bonus/input_bonus.h"
 
 void static	ft_init_struct(t_map *map)
 {

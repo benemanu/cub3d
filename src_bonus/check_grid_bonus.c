@@ -1,4 +1,4 @@
-#include  "../inc/input.h"
+#include  "../inc_bonus/input_bonus.h"
 
 static void	ft_set_player(t_map *map, int i, int j)
 {

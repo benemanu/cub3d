@@ -11,11 +11,28 @@ SRCS	= 	src/main.c \
 			src/movement.c \
 			src/key_config.c \
 			src/ray_free.c \
-			src/calculations_utils.c \
+			src/calculations_utils.c
+
+SRCS_BONUS	= 	src_bonus/main_bonus.c \
+				src_bonus/check_file_bonus.c \
+				src_bonus/file_utils_bonus.c \
+				src_bonus/check_info_bonus.c \
+				src_bonus/check_grid_bonus.c \
+				src_bonus/free_input_bonus.c \
+				src_bonus/raycast_bonus.c \
+				src_bonus/raycast_utils_bonus.c \
+				src_bonus/load_img_bonus.c \
+				src_bonus/calculations_bonus.c \
+				src_bonus/movement_bonus.c \
+				src_bonus/key_config_bonus.c \
+				src_bonus/ray_free_bonus.c \
+				src_bonus/calculations_utils_bonus.c 
+		
 		
 OUT		= 	cub3D
 CC		= 	cc
 OBJS	= 	$(SRCS:.c=.o)
+OBJS_BONUS = 	$(SRCS_BONUS:.c=.o)
 FLAGS	= 	-Wall -Wextra -Werror -g
 XFLAGS	= 	-L./minilibx-linux -lmlx -lXext -lX11 -lm
 VALGR	= 	valgrind-out.txt
@@ -33,14 +50,20 @@ $(OUT): $(OBJS)
 
 re:	clean all
 
+bonus: $(OBJS_BONUS)
+	@$(MAKE) -C ./libft
+	@$(MAKE) -C ./minilibx-linux
+	@$(CC) $(FLAGS) -o $(OUT) $(OBJS_BONUS) $(XFLAGS) ./libft/libft.a
+	@echo "$(GREEN)Compiled$(CLR_RMV)"
+
 clean:
-	@rm -f $(OBJS)
+	@rm -f $(OBJS) $(OBJS_BONUS)
 	@$(MAKE) clean -C ./libft
 	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 fclean:
-	@rm -f $(OBJS) $(OUT) $(VALGR)
+	@rm -f $(OBJS) $(OUT) $(VALGR) $(OBJS_BONUS)
 	@$(MAKE) fclean -C ./libft
 	@$(MAKE) clean -C ./minilibx-linux
 	@echo "$(RED)Deleted$(CLR_RMV)"

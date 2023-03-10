@@ -1,4 +1,4 @@
-#include "../inc/raycast.h"
+#include "../inc_bonus/raycast_bonus.h"
 
 void	ft_init_var(t_info *info)
 {

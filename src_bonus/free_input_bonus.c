@@ -1,4 +1,4 @@
-#include  "../inc/input.h"
+#include  "../inc_bonus/input_bonus.h"
 
 static void	ft_free_grid(t_map *map)
 {

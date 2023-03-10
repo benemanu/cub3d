@@ -1,4 +1,4 @@
-#include "../inc/raycast.h"
+#include "../inc_bonus/raycast_bonus.h"
 
 static int	ft_image_loop(t_info *info)
 {

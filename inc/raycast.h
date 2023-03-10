@@ -1,7 +1,7 @@
 #ifndef RAYCAST_H
 # define RAYCAST_H
 
-# include "../inc/input.h"
+# include "input.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
