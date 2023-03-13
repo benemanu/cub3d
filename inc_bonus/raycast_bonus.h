@@ -137,4 +137,7 @@ void		ft_ray_free(t_info *info, t_map *map);
 //minimap.c
 void		ft_draw_minimap(t_info *info);
 
+//pistol
+void ft_draw_pistol(t_info *info);
+
 #endif

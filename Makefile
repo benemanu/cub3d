@@ -28,6 +28,7 @@ SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/ray_free_bonus.c \
 				src_bonus/calculations_utils_bonus.c \
 				src_bonus/minimap.c \
+				src_bonus/pistol.c
 		
 		
 OUT		= 	cub3D
@@ -70,6 +71,10 @@ fclean:
 	@echo "$(RED)Deleted$(CLR_RMV)"
 
 run: $(OUT)
+	@echo "$(PURPLE)Executing$(CLR_RMV)"
+	@./$(OUT) ./maps/map1.cub
+
+runb: bonus
 	@echo "$(PURPLE)Executing$(CLR_RMV)"
 	@./$(OUT) ./maps/map1.cub
 
