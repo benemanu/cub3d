@@ -42,4 +42,5 @@ void	ft_load_images(t_info *info)
 	ft_load_img_east(info, info->map->east_t);
 	ft_load_img_west(info, info->map->west_t);
 	ft_load_img_south(info, info->map->south_t);
+	ft_load_img_pistol_0(info, "pistol_0.xpm");
 }

@@ -51,6 +51,7 @@ typedef struct s_game
 	t_image	west;
 	t_image	east;
 	t_image	game;
+	t_image pistol0;
 }			t_game;
 
 typedef struct s_ray
@@ -139,5 +140,6 @@ void		ft_draw_minimap(t_info *info);
 
 //pistol
 void ft_draw_pistol(t_info *info);
+void ft_load_img_pistol_0(t_info *info, char *img);
 
 #endif
