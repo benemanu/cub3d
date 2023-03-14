@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   key_config_bonus.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 16:57:23 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 16:57:24 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc_bonus/raycast_bonus.h"
 
 int	ft_key_config(int key, t_info *info)
@@ -14,6 +26,8 @@ int	ft_key_config(int key, t_info *info)
 		info->key.left = 1;
 	else if (key == K_RIGHT)
 		info->key.right = 1;
+	else if (key == K_SPACE)
+		info->key.space = 1;
 	else if (key == K_ESC)
 		mlx_loop_end(info->mlx);
 	return (0);

@@ -1,17 +1,29 @@
-SRCS	= 	src/main.c \
-			src/check_file.c \
-			src/file_utils.c \
-			src/check_info.c \
-			src/check_grid.c \
-			src/free_input.c \
-			src/raycast.c \
-			src/raycast_utils.c \
-			src/load_img.c \
-			src/calculations.c \
-			src/movement.c \
-			src/key_config.c \
-			src/ray_free.c \
-			src/calculations_utils.c
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/14 16:56:30 by shoffman          #+#    #+#              #
+#    Updated: 2023/03/14 16:56:31 by shoffman         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS		= 	src/main.c \
+				src/check_file.c \
+				src/file_utils.c \
+				src/check_info.c \
+				src/check_grid.c \
+				src/free_input.c \
+				src/raycast.c \
+				src/raycast_utils.c \
+				src/load_img.c \
+				src/calculations.c \
+				src/movement.c \
+				src/key_config.c \
+				src/ray_free.c \
+				src/calculations_utils.c
 
 SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/check_file_bonus.c \
@@ -28,14 +40,14 @@ SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/ray_free_bonus.c \
 				src_bonus/calculations_utils_bonus.c \
 				src_bonus/minimap.c \
-				src_bonus/pistol.c
-		
+				src_bonus/pistol.c \
+				src_bonus/load_pistol_img.c
 		
 OUT		= 	cub3D
 CC		= 	cc
 OBJS	= 	$(SRCS:.c=.o)
 OBJS_BONUS = 	$(SRCS_BONUS:.c=.o)
-FLAGS	= 	-Wall -Wextra -Werror -g
+FLAGS	= 	-Wall -Wextra -g
 XFLAGS	= 	-L./minilibx-linux -lmlx -lXext -lX11 -lm
 VALGR	= 	valgrind-out.txt
 
@@ -79,6 +91,17 @@ runb: bonus
 	@./$(OUT) ./maps/map1.cub
 
 val:	re
+	@echo "$(CYAN)Executing$(CLR_RMV)"
+	@valgrind --leak-check=full \
+		--show-leak-kinds=all \
+		--track-origins=yes \
+		--verbose \
+		--log-file=$(VALGR) \
+		./$(OUT) ./maps/map1.cub
+		@code $(VALGR)
+		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"
+
+valb:	re bonus
 	@echo "$(CYAN)Executing$(CLR_RMV)"
 	@valgrind --leak-check=full \
 		--show-leak-kinds=all \

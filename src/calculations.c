@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calculations.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 17:03:32 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 17:03:35 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/raycast.h"
 
 static void	ft_drawing(t_info *info)
@@ -99,7 +111,7 @@ int	ft_main_calc(t_info *info)
 	info->ray.x = -1;
 	while (++info->ray.x < WIDTH)
 	{
-		ft_ray_init(info);
+		ft_ray_(info);
 		ft_get_direction(info);
 		ft_calc_pixel(info);
 		ft_drawing(info);

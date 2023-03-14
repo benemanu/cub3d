@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   calculations_bonus.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 16:56:26 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 16:59:33 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc_bonus/raycast_bonus.h"
 
 static void	ft_drawing(t_info *info)
@@ -104,10 +116,14 @@ int	ft_main_calc(t_info *info)
 		ft_calc_pixel(info);
 		ft_drawing(info);
 	}
-	ft_draw_minimap(info);
-	ft_draw_pistol(info);
 	mlx_clear_window(info->mlx, info->win);
 	mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
+	ft_draw_minimap(info);
+	if (info->key.space == 1)
+		ft_shoot_pistol(info);
+	else
+		ft_draw_pistol(info, info->game.pistol0.data, info->game.pistol0.size_l,
+			&info->game.pistol0.dimensions);
 	ft_move_forth_back(info);
 	ft_move_left_right(info);
 	ft_rotate(info);

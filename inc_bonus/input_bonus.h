@@ -1,5 +1,17 @@
-#ifndef INPUT_H
-# define INPUT_H
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_bonus.h                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 17:00:30 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 17:00:32 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef INPUT_BONUS_H
+# define INPUT_BONUS_H
 
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"

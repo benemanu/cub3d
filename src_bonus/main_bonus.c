@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 16:57:32 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 16:59:52 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include  "../inc_bonus/input_bonus.h"
 
 void static	ft_init_struct(t_map *map)
@@ -20,8 +32,8 @@ int	main(int ac, char *argv[])
 	{
 		ft_init_struct(&map);
 		ft_check_file(&map, argv[1]);
-		// ft_print_grid(map.grid);
 		ft_main_raycast(&map);
 	}
 	return (0);
 }
+// ft_print_grid(map.grid);

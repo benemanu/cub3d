@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ray_free_bonus.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/14 16:57:51 by shoffman          #+#    #+#             */
+/*   Updated: 2023/03/14 16:57:52 by shoffman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc_bonus/raycast_bonus.h"
 
 static void	ft_free_images(t_info *info)
@@ -12,6 +24,14 @@ static void	ft_free_images(t_info *info)
 		mlx_destroy_image(info->mlx, info->game.west.img);
 	if (info->game.east.img)
 		mlx_destroy_image(info->mlx, info->game.east.img);
+	if (info->game.pistol0.img)
+		mlx_destroy_image(info->mlx, info->game.pistol0.img);
+	if (info->game.pistol1.img)
+		mlx_destroy_image(info->mlx, info->game.pistol1.img);
+	if (info->game.pistol2.img)
+		mlx_destroy_image(info->mlx, info->game.pistol2.img);
+	if (info->game.pistol3.img)
+		mlx_destroy_image(info->mlx, info->game.pistol3.img);
 	if (info->win && info->mlx)
 		mlx_destroy_window(info->mlx, info->win);
 	if (info->mlx)
