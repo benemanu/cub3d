@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:00:42 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 17:00:56 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:04:27 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_sprite
 	int			sprite_height;
 	int			sprite_width;
 	int			s_bpp;
+	int			x_off;
+	int			y_off;
 }				t_sprite;
 
 typedef struct s_image
@@ -77,6 +79,10 @@ typedef struct s_game
 	t_image		pistol1;
 	t_image		pistol2;
 	t_image		pistol3;
+	t_image		healthbar;
+	t_image		hud_pistol;
+	t_image		ammo_full;
+	t_image		ammo_empty;
 }				t_game;
 
 typedef struct s_ray
@@ -169,7 +175,19 @@ void			ft_load_img_pistol_0(t_info *info, char *img);
 void			ft_load_img_pistol_1(t_info *info, char *img);
 void			ft_load_img_pistol_2(t_info *info, char *img);
 void			ft_load_img_pistol_3(t_info *info, char *img);
-void			ft_draw_pistol(t_info *info, void *img_data, int size_line,
+
+//sprite_utils.c
+void			ft_draw_sprite(t_info *info, void *img_data, int size_line,
 					t_sprite *sprite);
+
+//hud
+void	ft_load_img_healthbar(t_info *info, char *img);
+void	ft_load_img_hud_pistol(t_info *info, char *img);
+void	ft_draw_hud(t_info *info);
+void	ft_load_img_ammo_full(t_info *info, char *img);
+void	ft_load_img_ammo_empty(t_info *info, char *img);
+
+//ammo
+void	ft_draw_ammo(t_info *info);
 
 #endif

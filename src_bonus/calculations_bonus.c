@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:56:26 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 16:59:33 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/14 18:29:10 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,8 +122,9 @@ int	ft_main_calc(t_info *info)
 	if (info->key.space == 1)
 		ft_shoot_pistol(info);
 	else
-		ft_draw_pistol(info, info->game.pistol0.data, info->game.pistol0.size_l,
+		ft_draw_sprite(info, info->game.pistol0.data, info->game.pistol0.size_l,
 			&info->game.pistol0.dimensions);
+	ft_draw_hud(info);
 	ft_move_forth_back(info);
 	ft_move_left_right(info);
 	ft_rotate(info);

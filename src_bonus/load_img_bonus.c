@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:56:54 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 17:02:35 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/14 19:01:47 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,8 @@ void	ft_load_images(t_info *info)
 	ft_load_img_pistol_1(info, "./textures/pistol_1.xpm");
 	ft_load_img_pistol_2(info, "./textures/pistol_2.xpm");
 	ft_load_img_pistol_3(info, "./textures/pistol_3.xpm");
+	ft_load_img_healthbar(info, "./textures/healthbar.xpm");
+	ft_load_img_hud_pistol(info, "./textures/hud_pistol.xpm");
+	ft_load_img_ammo_full(info, "./textures/ammo_full.xpm");
+	ft_load_img_ammo_empty(info, "./textures/ammo_empty.xpm");
 }

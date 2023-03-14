@@ -6,7 +6,7 @@
 #    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 16:56:30 by shoffman          #+#    #+#              #
-#    Updated: 2023/03/14 16:56:31 by shoffman         ###   ########.fr        #
+#    Updated: 2023/03/14 19:05:44 by shoffman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,13 +41,15 @@ SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/calculations_utils_bonus.c \
 				src_bonus/minimap.c \
 				src_bonus/pistol.c \
-				src_bonus/load_pistol_img.c
+				src_bonus/sprite_utils.c \
+				src_bonus/hud.c \
+				src_bonus/ammo.c
 		
 OUT		= 	cub3D
 CC		= 	cc
 OBJS	= 	$(SRCS:.c=.o)
 OBJS_BONUS = 	$(SRCS_BONUS:.c=.o)
-FLAGS	= 	-Wall -Wextra -g
+FLAGS	= 	-Wall -Wextra -Werror -g
 XFLAGS	= 	-L./minilibx-linux -lmlx -lXext -lX11 -lm
 VALGR	= 	valgrind-out.txt
 
