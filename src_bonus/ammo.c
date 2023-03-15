@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 19:04:44 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 19:22:36 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:51:10 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,9 @@ void ft_draw_ammo(t_info *info)
 {
 	int i;
 	int tmp;
-	static int	shots_left = 5;
 
 	i = 0;
-	tmp = shots_left;
+	tmp = info->shots_left;
 	while (i < 5)
 	{
 		if(tmp > 0)

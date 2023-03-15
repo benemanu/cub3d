@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:56:26 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 18:29:10 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/15 11:30:20 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,11 +119,14 @@ int	ft_main_calc(t_info *info)
 	mlx_clear_window(info->mlx, info->win);
 	mlx_put_image_to_window(info->mlx, info->win, info->game.game.img, 0, 0);
 	ft_draw_minimap(info);
-	if (info->key.space == 1)
+	if (info->key.space == 1 && info->shots_left > 0)
 		ft_shoot_pistol(info);
+	else if (info->key.space == 1 && info->shots_left == 0)
+		ft_draw_reload_message(info);
 	else
-		ft_draw_sprite(info, info->game.pistol0.data, info->game.pistol0.size_l,
-			&info->game.pistol0.dimensions);
+		ft_draw_pistol(info, 1);
+	if(info->key.r == 1)
+		info->shots_left = 5;
 	ft_draw_hud(info);
 	ft_move_forth_back(info);
 	ft_move_left_right(info);

@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:23 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 16:57:24 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/15 09:56:30 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	ft_key_config(int key, t_info *info)
 		info->key.right = 1;
 	else if (key == K_SPACE)
 		info->key.space = 1;
+	else if (key == K_R)
+		info->key.r = 1;
 	else if (key == K_ESC)
 		mlx_loop_end(info->mlx);
 	return (0);
@@ -47,6 +49,8 @@ int	ft_key_release(int key, t_info *info)
 		info->key.left = 0;
 	else if (key == K_RIGHT)
 		info->key.right = 0;
+	else if (key == K_R)
+		info->key.r = 0;
 	return (0);
 }
 

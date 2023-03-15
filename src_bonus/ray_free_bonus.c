@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:51 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 18:58:14 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/15 10:22:14 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ static void	ft_free_images(t_info *info)
 		mlx_destroy_image(info->mlx, info->game.ammo_empty.img);
 	if (info->game.ammo_full.img)
 		mlx_destroy_image(info->mlx, info->game.ammo_full.img);
+	if (info->game.reload.img)
+		mlx_destroy_image(info->mlx, info->game.reload.img);
 	if (info->win && info->mlx)
 		mlx_destroy_window(info->mlx, info->win);
 	if (info->mlx)
