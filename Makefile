@@ -6,7 +6,7 @@
 #    By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/14 16:56:30 by shoffman          #+#    #+#              #
-#    Updated: 2023/03/15 11:18:34 by shoffman         ###   ########.fr        #
+#    Updated: 2023/03/16 13:40:58 by shoffman         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,6 +115,9 @@ valb:	re bonus
 		./$(OUT) ./maps/map1.cub
 		@code $(VALGR)
 		@echo "$(YELLOW)Valgrind file created$(CLR_RMV)"
+
+norm:	
+	norminette -R CheckDefine -R CheckForbiddenSourceHeader libft inc_bonus inc src src_bonus 
 
 .PHONY:	all clean re run val
 

@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:56:26 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/15 11:30:20 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:33:29 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	ft_main_calc(t_info *info)
 		ft_draw_reload_message(info);
 	else
 		ft_draw_pistol(info, 1);
-	if(info->key.r == 1)
+	if (info->key.r == 1)
 		info->shots_left = 5;
 	ft_draw_hud(info);
 	ft_move_forth_back(info);

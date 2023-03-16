@@ -6,23 +6,23 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:00:42 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/15 11:17:34 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:59:00 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RAYCAST_BONUS_H
 # define RAYCAST_BONUS_H
 
+# include "../SDL2/include/SDL.h"
 # include "../libft/libft.h"
 # include "../minilibx-linux/mlx.h"
 # include "../minilibx-linux/mlx_int.h"
-# include "../SDL2/include/SDL.h"
 # include "input_bonus.h"
 # include <math.h>
+# include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <pthread.h>
 
 # define M_PI 3.14159265358979323846
 # define K_W 119
@@ -178,6 +178,7 @@ void			ft_draw_minimap(t_info *info);
 //pistol
 void			ft_shoot_pistol(t_info *info);
 void			ft_draw_pistol(t_info *info, int reset_space);
+void			ft_reload(t_info *info);
 void			ft_load_img_pistol_0(t_info *info, char *img);
 void			ft_load_img_pistol_1(t_info *info, char *img);
 void			ft_load_img_pistol_2(t_info *info, char *img);
@@ -188,19 +189,19 @@ void			ft_draw_sprite(t_info *info, void *img_data, int size_line,
 					t_sprite *sprite);
 
 //hud
-void	ft_load_img_healthbar(t_info *info, char *img);
-void	ft_load_img_hud_pistol(t_info *info, char *img);
-void	ft_draw_hud(t_info *info);
-void 	ft_draw_reload_message(t_info *info);
-void	ft_load_img_reload_message(t_info *info, char *img);
+void			ft_load_img_healthbar(t_info *info, char *img);
+void			ft_load_img_hud_pistol(t_info *info, char *img);
+void			ft_draw_hud(t_info *info);
+void			ft_draw_reload_message(t_info *info);
+void			ft_load_img_reload_message(t_info *info, char *img);
 
 //ammo
-void	ft_load_img_ammo_full(t_info *info, char *img);
-void	ft_load_img_ammo_empty(t_info *info, char *img);
-void	ft_draw_ammo(t_info *info);
+void			ft_load_img_ammo_full(t_info *info, char *img);
+void			ft_load_img_ammo_empty(t_info *info, char *img);
+void			ft_draw_ammo(t_info *info);
 
 //sound
-void* ft_shoot_sound();
-void ft_start_shoot_thread();
+// void			*ft_shoot_sound();
+// void			ft_start_shoot_thread();
 
 #endif

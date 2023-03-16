@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:00:30 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 17:00:32 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/16 13:49:21 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # define CANNOT_OPEN 9
 # define TEXTURE 10
 # define ALLOCATION 99
-
-# define CURR_P map->grid[i][j]
 
 typedef struct s_map
 {

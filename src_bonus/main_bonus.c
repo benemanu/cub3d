@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:32 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/15 12:24:49 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:14:10 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void static	ft_init_struct(t_map *map)
 	map->west_t = NULL;
 	map->east_t = NULL;
 	map->error = 0;
+	map->player_dir = 0;
 }
 
 int	main(int ac, char *argv[])

@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:11 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 16:57:11 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:13:16 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,25 +38,25 @@ void	ft_parse_grid(t_map *map)
 	unsigned int	i;
 	unsigned int	j;
 
-	i = 0;
-	map->player_dir = 0;
-	while (map->grid[i])
+	i = -1;
+	while (map->grid[++i])
 	{
-		j = 0;
-		while (CURR_P)
+		j = -1;
+		while (map->grid[i][++j])
 		{
-			if (CURR_P == '0' || CURR_P == 'N'
-				|| CURR_P == 'S' || CURR_P == 'E' || CURR_P == 'W')
+			if (map->grid[i][j] == '0' || map->grid[i][j] == 'N'
+				|| map->grid[i][j] == 'S' || map->grid[i][j] == 'E'
+				|| map->grid[i][j] == 'W')
 				ft_check_walls(map, i, j);
-			if (CURR_P == 'N' || CURR_P == 'S'
-				|| CURR_P == 'E' || CURR_P == 'W')
+			if (map->grid[i][j] == 'N' || map->grid[i][j] == 'S'
+				|| map->grid[i][j] == 'E' || map->grid[i][j] == 'W')
 				ft_set_player(map, i, j);
-			if (CURR_P != '0' && CURR_P != '1' && CURR_P != 'N' && CURR_P != ' '
-				&& CURR_P != 'S' && CURR_P != 'E' && CURR_P != 'W')
+			if (map->grid[i][j] != '0' && map->grid[i][j] != '1'
+				&& map->grid[i][j] != 'N' && map->grid[i][j] != ' '
+				&& map->grid[i][j] != 'S' && map->grid[i][j] != 'E'
+				&& map->grid[i][j] != 'W')
 				map->error = CHARACTER;
-			j++;
 		}
-		i++;
 	}
 	if (map->player_dir == 0)
 		map->error = PLAYER;
