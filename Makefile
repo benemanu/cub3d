@@ -45,7 +45,8 @@ SRCS_BONUS	= 	src_bonus/main_bonus.c \
 				src_bonus/hud.c \
 				src_bonus/ammo.c \
 				src_bonus/pistol_2.c \
-				src_bonus/sound.c
+				src_bonus/sound.c \
+				src_bonus/crosshair.c
 		
 OUT		= 	cub3D
 CC		= 	cc

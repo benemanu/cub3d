@@ -58,6 +58,8 @@ void	ft_draw_hud(t_info *info)
 	ft_draw_sprite(info, info->game.hud_pistol.data,
 		info->game.hud_pistol.size_l, &info->game.hud_pistol.dimensions);
 	ft_draw_ammo(info);
+	ft_print_crosshair(info);
+
 }
 
 void	ft_draw_reload_message(t_info *info)

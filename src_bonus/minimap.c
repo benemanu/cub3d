@@ -99,5 +99,5 @@ void	ft_draw_minimap(t_info *info)
 {
 	ft_draw_border(info);
 	ft_draw_current_map(info);
-	ft_draw_square(73, 73, 0xFF0000, info);
+    ft_draw_square(73, 73, 0xFF0000, info);
 }

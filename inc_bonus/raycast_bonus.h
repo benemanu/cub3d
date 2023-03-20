@@ -200,6 +200,9 @@ void			ft_load_img_ammo_full(t_info *info, char *img);
 void			ft_load_img_ammo_empty(t_info *info, char *img);
 void			ft_draw_ammo(t_info *info);
 
+//crosshair	
+void    		ft_print_crosshair(t_info *info);
+
 //sound
 // void			*ft_shoot_sound();
 // void			ft_start_shoot_thread();
