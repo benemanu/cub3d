@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:29 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/16 14:59:07 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:15:09 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	ft_load_img_pistol_3(t_info *info, char *img)
 	info->game.pistol3.dimensions.y_off = 420;
 }
 
+	// if (i == 10)
+	// 	ft_start_shoot_thread();
 void	ft_shoot_pistol(t_info *info)
 {
 	static int	i = 0;
 
-	// if (i == 10)
-	// 	ft_start_shoot_thread();
 	if (i >= 0 && i < 15)
 	{
 		ft_draw_sprite(info, info->game.pistol0.data, info->game.pistol0.size_l,

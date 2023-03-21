@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:57:42 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/14 16:57:43 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:15:38 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ void	ft_draw_minimap(t_info *info)
 {
 	ft_draw_border(info);
 	ft_draw_current_map(info);
-    ft_draw_square(73, 73, 0xFF0000, info);
+	ft_draw_square(73, 73, 0xFF0000, info);
 }

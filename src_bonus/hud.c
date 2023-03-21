@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:43:44 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/16 13:34:40 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:16:18 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ void	ft_draw_hud(t_info *info)
 		info->game.hud_pistol.size_l, &info->game.hud_pistol.dimensions);
 	ft_draw_ammo(info);
 	ft_print_crosshair(info);
-
 }
 
 void	ft_draw_reload_message(t_info *info)

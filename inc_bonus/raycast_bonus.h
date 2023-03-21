@@ -6,7 +6,7 @@
 /*   By: shoffman <shoffman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 17:00:42 by shoffman          #+#    #+#             */
-/*   Updated: 2023/03/16 14:59:00 by shoffman         ###   ########.fr       */
+/*   Updated: 2023/03/21 10:17:17 by shoffman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,7 +201,7 @@ void			ft_load_img_ammo_empty(t_info *info, char *img);
 void			ft_draw_ammo(t_info *info);
 
 //crosshair	
-void    		ft_print_crosshair(t_info *info);
+void			ft_print_crosshair(t_info *info);
 
 //sound
 // void			*ft_shoot_sound();
